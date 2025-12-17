@@ -162,7 +162,6 @@ convertAnnotation <- function(x,
 #' @return Character string: "name", "delta_mass", or "unimod_id"
 #'
 #' @examples
-#' \dontrun{
 #' # Detect Unimod ID format
 #' .detectModificationType("UNIMOD:35")
 #' # Result: "unimod_id"
@@ -174,7 +173,6 @@ convertAnnotation <- function(x,
 #' # Detect name format
 #' .detectModificationType("Oxidation")
 #' # Result: "name"
-#' }
 #'
 #' @noRd
 .detectModificationType <- function(mod_string) {
@@ -211,7 +209,6 @@ convertAnnotation <- function(x,
 #' @return Character string with converted modification, or NULL if conversion failed
 #'
 #' @examples
-#' \dontrun{
 #' # Load Unimod data
 #' unimod_data <- unimod::modifications[!unimod::modifications$NeutralLoss, 
 #'                                      c("UnimodId", "Name", "MonoMass")]
@@ -226,7 +223,6 @@ convertAnnotation <- function(x,
 #' .convertModificationFormat("+15.995", "delta_mass", "name", 
 #'                           unimod_data, 0.01)
 #' # Result: "Oxidation"
-#' }
 #'
 #' @noRd
 .convertModificationFormat <- function(mod_content, input_type, output_type, 
@@ -289,7 +285,6 @@ convertAnnotation <- function(x,
 #' @return List with unimod_id, name, and mass, or NULL if not found
 #'
 #' @examples
-#' \dontrun{
 #' # Load Unimod data
 #' unimod_data <- unimod::modifications[!unimod::modifications$NeutralLoss, 
 #'                                      c("UnimodId", "Name", "MonoMass")]
@@ -302,7 +297,6 @@ convertAnnotation <- function(x,
 #' # Look up non-existent modification
 #' .lookupByName("NonExistent", unimod_data)
 #' # Result: NULL
-#' }
 #'
 #' @noRd
 .lookupByName <- function(name, unimod_data) {
@@ -335,7 +329,6 @@ convertAnnotation <- function(x,
 #' @return List with unimod_id, name, and mass, or NULL if not found
 #'
 #' @examples
-#' \dontrun{
 #' # Load Unimod data
 #' unimod_data <- unimod::modifications[!unimod::modifications$NeutralLoss, 
 #'                                      c("UnimodId", "Name", "MonoMass")]
@@ -348,7 +341,6 @@ convertAnnotation <- function(x,
 #' # Look up with no match
 #' .lookupByMass(999.999, unimod_data, 0.01)
 #' # Result: NULL
-#' }
 #'
 #' @noRd
 .lookupByMass <- function(mass, unimod_data, tolerance) {
@@ -386,7 +378,6 @@ convertAnnotation <- function(x,
 #' @return List with unimod_id, name, and mass, or NULL if not found
 #'
 #' @examples
-#' \dontrun{
 #' # Load Unimod data
 #' unimod_data <- unimod::modifications[!unimod::modifications$NeutralLoss, 
 #'                                      c("UnimodId", "Name", "MonoMass")]
@@ -399,7 +390,6 @@ convertAnnotation <- function(x,
 #' # Look up non-existent ID
 #' .lookupByUnimodId(99999, unimod_data)
 #' # Result: NULL
-#' }
 #'
 #' @noRd
 .lookupByUnimodId <- function(unimod_id, unimod_data) {
@@ -428,7 +418,6 @@ convertAnnotation <- function(x,
 #' @return Numeric Unimod ID
 #'
 #' @examples
-#' \dontrun{
 #' # Extract from full format
 #' .extractUnimodId("UNIMOD:35")
 #' # Result: 35
@@ -440,7 +429,6 @@ convertAnnotation <- function(x,
 #' # Case insensitive
 #' .extractUnimodId("unimod:35")
 #' # Result: 35
-#' }
 #'
 #' @noRd
 .extractUnimodId <- function(unimod_string) {
@@ -461,7 +449,6 @@ convertAnnotation <- function(x,
 #' @return Character string with formatted mass (e.g., "+15.994915")
 #'
 #' @examples
-#' \dontrun{
 #' # Format positive mass
 #' .formatMass(15.994915)
 #' # Result: "+15.994915"
@@ -473,7 +460,6 @@ convertAnnotation <- function(x,
 #' # Custom precision
 #' .formatMass(15.994915, digits = 3)
 #' # Result: "+15.995"
-#' }
 #'
 #' @noRd
 .formatMass <- function(mass, digits = 6) {
