@@ -481,6 +481,6 @@ convertAnnotation <- function(x,
     if (mass >= 0) {
         paste0("+", round(mass, digits))
     } else {
-        round(mass, digits)
+        as.character(round(mass, digits))
     }
 }
