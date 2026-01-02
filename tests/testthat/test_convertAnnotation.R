@@ -1,5 +1,3 @@
-context("convertAnnotation")
-
 # Test main convertAnnotation function ====
 
 test_that("convertAnnotation converts name to delta_mass", {

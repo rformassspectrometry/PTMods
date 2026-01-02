@@ -1,5 +1,3 @@
-context("aminoacids")
-
 test_that(".aminoacids", {
     skip_if_not_installed("xml2")
     x <- xml2::read_xml(paste0(

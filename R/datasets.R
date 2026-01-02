@@ -27,7 +27,7 @@
 #' follows:
 #'
 #' ```
-#' unimod:::.createDataSets()
+#' PTMods:::.createDataSets()
 #' ```
 #'
 #' @format A `data.frame` with 4 columns (Name, FullName, AvgMass, MonoMass) for
@@ -46,7 +46,7 @@
 #' follows:
 #'
 #' ```
-#' unimod:::.createDataSets()
+#' PTMods:::.createDataSets()
 #' ```
 #'
 #' @format A `data.frame` with 11 columns (OneLetter, ThreeLetter, FullName,
@@ -66,7 +66,7 @@
 #' follows:
 #'
 #' ```
-#' unimod:::.createDataSets()
+#' PTMods:::.createDataSets()
 #' ```
 #'
 #' @format A `data.frame` with 15 columns (Id (created by

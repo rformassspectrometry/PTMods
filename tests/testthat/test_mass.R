@@ -1,5 +1,3 @@
-context("mass")
-
 test_that(".aamass", {
     expect_error(PTMods:::.aamass(1:3))
     expect_error(PTMods:::.aamass("ACE", "FOO"))

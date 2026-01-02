@@ -26,6 +26,10 @@ The `PTMods` package focuses on handling post-translational
 modifications (PTMs). It disctributes PTMs from the Unimod database
 and allows to convert PTM annotations between multiple formats.
 
+```{r}
+library(PTMods)
+```
+
 # The Unimod database
 
 The `PTMods` package distributes the data from the Unimod database:
@@ -69,7 +73,7 @@ head(aminoacids)
 - The `elements` data.frame describing `r nrow(PTMods::elements)`
   chemical elements from the unimod database:
 
-```{r aminoacids}
+```{r elements}
 head(elements)
 ```
 

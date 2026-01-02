@@ -1,5 +1,3 @@
-context("elements")
-
 test_that(".elements", {
     skip_if_not_installed("xml2")
     x <- xml2::read_xml(paste0(

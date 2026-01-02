@@ -1,5 +1,3 @@
-context("modifications")
-
 skip_if_not_installed("xml2")
 x <- xml2::read_xml(paste0(
     '<umod:unimod xmlns:umod="http://www.unimod.org/xmlns/schema/unimod_2">',

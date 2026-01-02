@@ -1,5 +1,3 @@
-context("utils")
-
 test_that(".composition2character", {
     expect_error(PTMods:::.composition2character("foo"), "must be a 'numeric'")
     expect_error(PTMods:::.composition2character(1:3), "must be a named")

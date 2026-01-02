@@ -1,5 +1,3 @@
-context("datasets")
-
 # may move to longtests/
 # see: https://stat.ethz.ch/pipermail/bioc-devel/2017-November/012327.html
 

@@ -2,9 +2,10 @@
 
 ## PTMods 0.3
 
-- Rename the package to `PTMods`.
+- Update PTMods datasets [2026-01-02 Fri].
+- Rename the package to `PTMods` and add vignette.
 - Add `convertAnnotation()` to parse and convert between 3 PTM annotation
-  styles. Currently only supports `unimodId`, unimod `name` and `deltaMass`.
+  styles. Currently supports `unimodId`, unimod `name` and `deltaMass`.
 
 ## unimod 0.2 [2023-02-05]
 
