@@ -5,19 +5,19 @@ context("datasets")
 
 skip_if_not_installed("xml2")
 
-xml <- unimod:::.unimodDb()
+xml <- PTMods:::.unimodDb()
 
 test_that("aminoacids", {
-    data(aminoacids, package="unimod")
-    expect_equal(unimod:::.aminoacids(xml), aminoacids)
+    data(aminoacids, package="PTMods")
+    expect_equal(PTMods:::.aminoacids(xml), aminoacids)
 })
 
 test_that("elements", {
-    data(elements, package="unimod")
-    expect_equal(unimod:::.elements(xml), elements)
+    data(elements, package="PTMods")
+    expect_equal(PTMods:::.elements(xml), elements)
 })
 
 test_that("modifications", {
-    data(modifications, package="unimod")
-    expect_equal(unimod:::.modifications(xml), modifications)
+    data(modifications, package="PTMods")
+    expect_equal(PTMods:::.modifications(xml), modifications)
 })

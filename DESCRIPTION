@@ -1,10 +1,10 @@
-Package: unimod
+Package: PTMods
 Type: Package
 Version: 0.3
-Title: Managing amino acid modifications for mass spectrometry
+Title: Managing post-translational modifications in R
 Author: Laurent Gatto and Sebastian Gidd
 Authors@R: c(person(given = "Laurent", family = "Gatto",
-	            email = "laurent.gatto@uclouvain.be", role = c("aut")),
+                    email = "laurent.gatto@uclouvain.be", role = c("aut")),
              person("Sebastian", "Gibb", role=c("aut", "cre"),
               email="mail@sebastiangibb.de"),
             person(given = "Guillaume", family = "Deflandre",
@@ -12,15 +12,15 @@ Authors@R: c(person(given = "Laurent", family = "Gatto",
             role = "ctb",
             comment = c(ORCID = "0009-0008-1257-2416")))
 Description: An interface to the community supported database for
-	     amino acide/protein modifications using mass
-	     spectrometry.
+             amino acide/protein modifications using mass
+             spectrometry.
 Depends: R (>= 3.5), methods
 Suggests: xml2, testthat, knitr, Biostrings
 License: GPL-3
 VignetteBuilder: knitr
 biocViews: Proteomics, MassSpectrometry
-BugReports: https://github.com/ComputationalProteomicsUnit/unimod/issues
-URL: https://github.com/ComputationalProteomicsUnit/unimod
+BugReports: https://github.com/RforMassSpectrometry/unimod/issues
+URL: https://github.com/RforMassSpectrometry/unimod
 RoxygenNote: 7.3.3
 LazyData: true
 Encoding: UTF-8

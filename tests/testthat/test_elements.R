@@ -17,5 +17,5 @@ test_that(".elements", {
         row.names=c("H", "2H"),
         stringsAsFactors=FALSE
     )
-    expect_equal(unimod:::.elements(x), d)
+    expect_equal(PTMods:::.elements(x), d)
 })

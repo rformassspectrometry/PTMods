@@ -137,117 +137,117 @@ test_that("convertAnnotation warns on unknown modifications", {
 
 test_that(".detectModificationType correctly identifies modification types", {
     # Unimod ID formats
-    expect_equal(unimod:::.detectModificationType("UNIMOD:35"), "unimodId")
-    expect_equal(unimod:::.detectModificationType("U:35"), "unimodId")
-    expect_equal(unimod:::.detectModificationType("unimod:35"), "unimodId")
+    expect_equal(PTMods:::.detectModificationType("UNIMOD:35"), "unimodId")
+    expect_equal(PTMods:::.detectModificationType("U:35"), "unimodId")
+    expect_equal(PTMods:::.detectModificationType("unimod:35"), "unimodId")
 
     # Delta mass formats
-    expect_equal(unimod:::.detectModificationType("+15.995"), "deltaMass")
-    expect_equal(unimod:::.detectModificationType("-17.026"), "deltaMass")
-    expect_equal(unimod:::.detectModificationType("+79.966331"), "deltaMass")
-    expect_equal(unimod:::.detectModificationType("+15"), "deltaMass")
+    expect_equal(PTMods:::.detectModificationType("+15.995"), "deltaMass")
+    expect_equal(PTMods:::.detectModificationType("-17.026"), "deltaMass")
+    expect_equal(PTMods:::.detectModificationType("+79.966331"), "deltaMass")
+    expect_equal(PTMods:::.detectModificationType("+15"), "deltaMass")
 
     # Name format
-    expect_equal(unimod:::.detectModificationType("Oxidation"), "name")
-    expect_equal(unimod:::.detectModificationType("Phospho"), "name")
-    expect_equal(unimod:::.detectModificationType("Carbamidomethyl"), "name")
+    expect_equal(PTMods:::.detectModificationType("Oxidation"), "name")
+    expect_equal(PTMods:::.detectModificationType("Phospho"), "name")
+    expect_equal(PTMods:::.detectModificationType("Carbamidomethyl"), "name")
 })
 
 test_that(".extractUnimodId extracts numeric ID", {
-    expect_equal(unimod:::.extractUnimodId("UNIMOD:35"), 35)
-    expect_equal(unimod:::.extractUnimodId("U:35"), 35)
-    expect_equal(unimod:::.extractUnimodId("unimod:35"), 35)
-    expect_equal(unimod:::.extractUnimodId("UNIMOD:4"), 4)
+    expect_equal(PTMods:::.extractUnimodId("UNIMOD:35"), 35)
+    expect_equal(PTMods:::.extractUnimodId("U:35"), 35)
+    expect_equal(PTMods:::.extractUnimodId("unimod:35"), 35)
+    expect_equal(PTMods:::.extractUnimodId("UNIMOD:4"), 4)
 })
 
 test_that(".formatMass formats mass values correctly", {
     # Positive mass
-    expect_equal(unimod:::.formatMass(15.994915), "+15.994915")
-    expect_equal(unimod:::.formatMass(79.966331), "+79.966331")
+    expect_equal(PTMods:::.formatMass(15.994915), "+15.994915")
+    expect_equal(PTMods:::.formatMass(79.966331), "+79.966331")
 
     # Negative mass
-    expect_equal(unimod:::.formatMass(-17.026549), "-17.026549")
+    expect_equal(PTMods:::.formatMass(-17.026549), "-17.026549")
 
     # Zero
-    expect_equal(unimod:::.formatMass(0), "+0")
+    expect_equal(PTMods:::.formatMass(0), "+0")
 
     # Custom precision
-    expect_equal(unimod:::.formatMass(15.994915, digits = 3), "+15.995")
-    expect_equal(unimod:::.formatMass(15.994915, digits = 2), "+15.99")
+    expect_equal(PTMods:::.formatMass(15.994915, digits = 3), "+15.995")
+    expect_equal(PTMods:::.formatMass(15.994915, digits = 2), "+15.99")
 })
 
 test_that(".lookupByName finds modifications correctly", {
-    unimod_data <- unimod::modifications[!unimod::modifications$NeutralLoss,
+    unimod_data <- PTMods::modifications[!PTMods::modifications$NeutralLoss,
                                          c("UnimodId", "Name", "MonoMass")]
     unimod_data <- unimod_data[!duplicated(unimod_data$Name), ]
 
     # Valid lookup
-    result <- unimod:::.lookupByName("Oxidation", unimod_data)
+    result <- PTMods:::.lookupByName("Oxidation", unimod_data)
     expect_type(result, "list")
     expect_equal(result$unimodId, 35)
     expect_equal(result$name, "Oxidation")
     expect_equal(result$mass, 15.994915, tolerance = 0.000001)
 
     # Invalid lookup
-    result <- unimod:::.lookupByName("NonExistentMod", unimod_data)
+    result <- PTMods:::.lookupByName("NonExistentMod", unimod_data)
     expect_null(result)
 })
 
 test_that(".lookupByMass finds modifications correctly", {
-    unimod_data <- unimod::modifications[!unimod::modifications$NeutralLoss,
+    unimod_data <- PTMods::modifications[!PTMods::modifications$NeutralLoss,
                                          c("UnimodId", "Name", "MonoMass")]
     unimod_data <- unimod_data[!duplicated(unimod_data$Name), ]
 
     # Valid lookup with tolerance
-    result <- unimod:::.lookupByMass(15.995, unimod_data, 0.01)
+    result <- PTMods:::.lookupByMass(15.995, unimod_data, 0.01)
     expect_type(result, "list")
     expect_equal(result$unimodId, 35)
     expect_equal(result$name, "Oxidation")
 
     # Exact match
-    result <- unimod:::.lookupByMass(15.994915, unimod_data, 0.01)
+    result <- PTMods:::.lookupByMass(15.994915, unimod_data, 0.01)
     expect_type(result, "list")
     expect_equal(result$unimodId, 35)
 
     # No match with strict tolerance
-    result <- unimod:::.lookupByMass(999.999, unimod_data, 0.01)
+    result <- PTMods:::.lookupByMass(999.999, unimod_data, 0.01)
     expect_null(result)
 })
 
 test_that(".lookupByUnimodId finds modifications correctly", {
-    unimod_data <- unimod::modifications[!unimod::modifications$NeutralLoss,
+    unimod_data <- PTMods::modifications[!PTMods::modifications$NeutralLoss,
                                          c("UnimodId", "Name", "MonoMass")]
     unimod_data <- unimod_data[!duplicated(unimod_data$Name), ]
 
     # Valid lookup
-    result <- unimod:::.lookupByUnimodId(35, unimod_data)
+    result <- PTMods:::.lookupByUnimodId(35, unimod_data)
     expect_type(result, "list")
     expect_equal(result$unimodId, 35)
     expect_equal(result$name, "Oxidation")
     expect_equal(result$mass, 15.994915, tolerance = 0.000001)
 
     # Another valid lookup
-    result <- unimod:::.lookupByUnimodId(21, unimod_data)
+    result <- PTMods:::.lookupByUnimodId(21, unimod_data)
     expect_type(result, "list")
     expect_equal(result$unimodId, 21)
     expect_equal(result$name, "Phospho")
 
     # Invalid lookup
-    result <- unimod:::.lookupByUnimodId(99999, unimod_data)
+    result <- PTMods:::.lookupByUnimodId(99999, unimod_data)
     expect_null(result)
 })
 
 test_that(".convertAnnotation handles single sequences", {
     # Valid conversion
-    expect_equal(unimod:::.convertAnnotation("M[Oxidation]PEPTIDE",
+    expect_equal(PTMods:::.convertAnnotation("M[Oxidation]PEPTIDE",
                                             convertToStyle = "deltaMass"),
                  "M[+15.994915]PEPTIDE")
 
     # Input validation
-    expect_error(unimod:::.convertAnnotation(c("A", "B"),
+    expect_error(PTMods:::.convertAnnotation(c("A", "B"),
                                             convertToStyle = "deltaMass"),
                  "must be a single character string")
 
-    expect_error(unimod:::.convertAnnotation(123, convertToStyle = "deltaMass"),
+    expect_error(PTMods:::.convertAnnotation(123, convertToStyle = "deltaMass"),
                  "must be a single character string")
 })

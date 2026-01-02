@@ -35,5 +35,5 @@ test_that(".aminoacids", {
         row.names=c("A", "C"),
         stringsAsFactors=FALSE
     )
-    expect_equal(unimod:::.aminoacids(x), d)
+    expect_equal(PTMods:::.aminoacids(x), d)
 })

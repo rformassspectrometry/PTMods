@@ -36,12 +36,12 @@ sp <- cbind(
 )
 
 test_that(".characterId", {
-    expect_error(unimod:::.characterId(1:10, "foo", "bar", "0"), "name")
-    expect_error(unimod:::.characterId("foo", 1:10, "bar", "0"), "site")
-    expect_error(unimod:::.characterId("foo", "bar", 1:10, "0"), "position")
-    expect_error(unimod:::.characterId("foo", "bar", "0", 1:10), "neutralLoss")
+    expect_error(PTMods:::.characterId(1:10, "foo", "bar", "0"), "name")
+    expect_error(PTMods:::.characterId("foo", 1:10, "bar", "0"), "site")
+    expect_error(PTMods:::.characterId("foo", "bar", 1:10, "0"), "position")
+    expect_error(PTMods:::.characterId("foo", "bar", "0", 1:10), "neutralLoss")
     expect_equal(
-        unimod:::.characterId(
+        PTMods:::.characterId(
             rep("Acetyl", 4),
             c("K", "S", "N-term", "N-term"),
             c("Anywhere", "Anywhere", "Any N-term", "Protein N-term"),
@@ -50,7 +50,7 @@ test_that(".characterId", {
         c("Acetyl:K", "Acetyl:S:NL", "Acetyl:N-term", "Acetyl:P-N-term")
     )
     expect_equal(
-        unimod:::.characterId(
+        PTMods:::.characterId(
             rep("Acetyl", 4),
             c("K", "S", "N-term", "N-term"),
             c("Anywhere", "Anywhere", "Any N-term", "Any N-term"),
@@ -63,7 +63,7 @@ test_that(".characterId", {
 test_that(".delta", {
     delta <- c(avge_mass="42.0367", mono_mass="42.010565",
                composition="H(2) C(2) O")
-    expect_equal(unimod:::.delta(node), delta)
+    expect_equal(PTMods:::.delta(node), delta)
 })
 
 test_that(".modifications", {
@@ -81,7 +81,7 @@ test_that(".modifications", {
                     Approved=TRUE, Hidden=c(FALSE, TRUE, TRUE),
                     stringsAsFactors=FALSE)
     rownames(m) <- m$Id
-    expect_equal(unimod:::.modifications(x), m)
+    expect_equal(PTMods:::.modifications(x), m)
 })
 
 test_that(".neutralLoss", {
@@ -113,11 +113,11 @@ test_that(".neutralLoss", {
     nl <- matrix(c("T", "1", "97.9952", "97.976896", "H(3) O(4) P"), nrow=1,
                  dimnames=list(c(), c("site", "spec_group",
                                       "avge_mass", "mono_mass", "composition")))
-    expect_equal(unimod:::.neutralLoss(node), nl)
+    expect_equal(PTMods:::.neutralLoss(node), nl)
 })
 
 test_that(".specificity", {
-    expect_equal(unimod:::.specificity(node), sp)
+    expect_equal(PTMods:::.specificity(node), sp)
 
     sp2 <- cbind(
         hidden="1",
@@ -134,11 +134,11 @@ test_that(".specificity", {
 '</umod:mod>',
 '</umod:modifications>',
 '</umod:unimod>')), "//umod:mod")
-    expect_equal(unimod:::.specificity(node2), sp2)
+    expect_equal(PTMods:::.specificity(node2), sp2)
 })
 
 test_that(".title", {
     title <- c(record_id="1", title="Acetyl", full_name="Acetylation",
                date_time_modified="2008-02-15 05:20:02", approved="1")
-    expect_equal(unimod:::.title(node), title)
+    expect_equal(PTMods:::.title(node), title)
 })
