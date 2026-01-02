@@ -22,7 +22,13 @@ BiocStyle::markdown()
 
 # Introduction
 
-# The unimod database
+The `PTMods` package focuses on handling post-translational
+modifications (PTMs). It disctributes PTMs from the Unimod database
+and allows to convert PTM annotations between multiple formats.
+
+# The Unimod database
+
+The `PTMods` package distributes the data from the Unimod database:
 
 > Unimod is a public domain database, distributed under a
 > [copyleft licence](http://www.gnu.org/licenses/license-list.html): "a
@@ -42,9 +48,50 @@ BiocStyle::markdown()
 
 Source: http://www.unimod.org/unimod_help.html
 
+The package provides the following objects.
+
+- The `modifications` dataframe describing `r
+  nrow(PTMods::modifications)` PTMs from the unimod database:
+
+```{r modifications}
+head(modifications)
+```
+
+- The `aminoacids` dataframe describing `r nrow(PTMods::aminoacids)`
+  amino acids from the unimod database:
+
+
+```{r aminoacids}
+head(aminoacids)
+```
+
+
+- The `elements` data.frame describing `r nrow(PTMods::elements)`
+  chemical elements from the unimod database:
+
+```{r aminoacids}
+head(elements)
+```
 
 # Different types of PTM annotations
 
+PTMs can be annotated using different syntaxes:
+
+- The *deltaMass* syntax that describes the mass shift of an amino
+  acid such as for example `"M[+15.994915]PEPTIDE"` for an oxidation.
+- The *unimodId* that uses the unimod identifier such as for example
+  `"M[UNIMOD:35]PEPTIDE"` for an oxidation.
+- The modification's name, such as for example `"M[Oxidation]PEPTIDE"`.
+
+
+The `convertAnnotion()` function can be used to convert between these
+different syntaxes:
+
+```{r convertAnnotion}
+convertAnnotation("M[Oxidation]PEPTIDE", convertToStyle = "deltaMass")
+convertAnnotation("M[Oxidation]PEPTIDE", convertToStyle = "unimodId")
+convertAnnotation("M[+15.995]PEPTIDE", convertToStyle = "name")
+```
 
 # Session information
 
