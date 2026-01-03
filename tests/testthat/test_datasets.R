@@ -7,15 +7,18 @@ xml <- PTMods:::.unimodDb()
 
 test_that("aminoacids", {
     data(aminoacids, package="PTMods")
+    attr(aminoacids, "Created") <- NULL ## ignore this attr
     expect_equal(PTMods:::.aminoacids(xml), aminoacids)
 })
 
 test_that("elements", {
     data(elements, package="PTMods")
+    attr(elements, "Created") <- NULL ## ignore this attr
     expect_equal(PTMods:::.elements(xml), elements)
 })
 
 test_that("modifications", {
     data(modifications, package="PTMods")
+    attr(modifications, "Created") <- NULL ## ignore this attr
     expect_equal(PTMods:::.modifications(xml), modifications)
 })
