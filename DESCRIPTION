@@ -3,14 +3,15 @@ Type: Package
 Version: 0.3
 Title: Managing post-translational modifications in R
 Author: Laurent Gatto and Sebastian Gidd
-Authors@R: c(person(given = "Laurent", family = "Gatto",
-                    email = "laurent.gatto@uclouvain.be", role = c("aut")),
-             person("Sebastian", "Gibb", role=c("aut", "cre"),
-              email="mail@sebastiangibb.de"),
-            person(given = "Guillaume", family = "Deflandre",
-            email = "guillaume.deflandre@uclouvain.be",
-            role = "ctb",
-            comment = c(ORCID = "0009-0008-1257-2416")))
+Authors@R: c(person("Laurent", "Gatto", role = "aut",
+                    email = "laurent.gatto@uclouvain.be",
+                    comment = c(ORCID = "0000-0002-1520-2268")),
+             person("Sebastian", "Gibb", role = c("aut", "cre"),
+                    email = "mail@sebastiangibb.de"
+                    comment = c(ORCID = "0000-0001-7406-4443")),
+             person("Guillaume", "Deflandre", role = "ctb",
+                    email = "guillaume.deflandre@uclouvain.be",
+                    comment = c(ORCID = "0009-0008-1257-2416")))
 Description: An interface to the community supported database for
              amino acide/protein modifications using mass
              spectrometry.
