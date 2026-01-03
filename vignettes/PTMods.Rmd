@@ -103,6 +103,29 @@ head(aminoacids)
 head(elements)
 ```
 
+
+Note that the goal of `PTMods` is not to place this information in a
+biological context. There are other sources of biological information
+about post-translational modifications:
+
+
+- [RESID](https://proteininformationresource.org/resid/resid.shtml)
+  for post-translational modifications
+- [Uniprot/Swiss-Prot](https://www.uniprot.org/) protein sequence database
+- [Prosite](https://prosite.expasy.org/) database of protein families and domains
+- [Glycan Database](https://www.functionalglycomics.org/) from the
+  Consortium for Functional Glycomics
+- [PhosphoDB](https://phosphodb.hecklab.com/site/index) and
+  [PhosphoSitePlus](https://www.phosphosite.org/homeAction.action) for
+  phosphoryations
+- ...
+
+Other compilations of modifications with a focus on mass spectrometry:
+
+- [Delta Mass](https://abrf.org/resources/delta-mass/)
+- [FindMod](https://web.expasy.org/findmod/)
+- ...
+
 # Different types of PTM annotations
 
 PTMs can be annotated using different syntaxes:
