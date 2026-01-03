@@ -22,12 +22,38 @@ BiocStyle::markdown()
 
 # Introduction
 
-The `PTMods` package focuses on handling post-translational
-modifications (PTMs). It disctributes PTMs from the Unimod database
-and allows to convert PTM annotations between multiple formats.
+
+Post-translational modifications (PTMs) are covalent modifications
+that happend after protein biosynthesis that can have a major
+influence of protein function. PTMs are biologically very important
+and can be identified in a high-throughput way using
+mass-spectrometry.
+
+The `PTMods` package focuses on handling such PTMs and works in
+conjuction with the `r BiocStyle::Biocpkg("PSMatch")` package. It
+disctributes PTMs from the Unimod database and allows to convert PTM
+annotations between multiple annotation formats.
 
 ```{r}
 library(PTMods)
+```
+
+## Installation
+
+The package can be installed from Bioconductor with
+
+```{r install, eval = FALSE}
+if (!require("BiocManager", quietly = TRUE))
+    install.packages("BiocManager")
+
+BiocManager::install("PTMods")
+```
+
+Alternatively, altough this isn't recommended in general, it can also
+be installed from Github.
+
+```{r install, eval = FALSE}
+BiocManager::install("RforMassSpectrometry/PTMods")
 ```
 
 # The Unimod database
