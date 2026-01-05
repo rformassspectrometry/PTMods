@@ -30,7 +30,7 @@ mass-spectrometry.
 
 The `PTMods` package focuses on handling such PTMs and works in
 conjuction with the `r BiocStyle::Biocpkg("PSMatch")` package. It
-disctributes PTMs from the Unimod database and allows to convert PTM
+distributes PTMs from the Unimod database and allows to convert PTM
 annotations between multiple annotation formats.
 
 ```{r}
