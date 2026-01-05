@@ -22,10 +22,9 @@ BiocStyle::markdown()
 
 # Introduction
 
-
 Post-translational modifications (PTMs) are covalent modifications
-that happend after protein biosynthesis that can have a major
-influence of protein function. PTMs are biologically very important
+that happened after protein biosynthesis that can have a major
+influence on protein function. PTMs are biologically very important
 and can be identified in a high-throughput way using
 mass-spectrometry.
 
