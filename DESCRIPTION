@@ -13,7 +13,7 @@ Authors@R: c(person("Laurent", "Gatto", role = "aut",
                     email = "guillaume.deflandre@uclouvain.be",
                     comment = c(ORCID = "0009-0008-1257-2416")))
 Description: An interface to the community supported database for
-             amino acide/protein modifications using mass
+             amino acid/protein modifications using mass
              spectrometry.
 Depends: R (>= 3.5), methods
 Suggests: xml2, testthat, knitr, BiocStyle
