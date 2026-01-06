@@ -1,4 +1,6 @@
 # Test main convertAnnotation function ====
+data(modifications)
+
 
 test_that("convertAnnotation converts name to delta_mass", {
     # Single modification
@@ -175,8 +177,8 @@ test_that(".formatMass formats mass values correctly", {
 })
 
 test_that(".lookupByName finds modifications correctly", {
-    unimod_data <- PTMods::modifications[!PTMods::modifications$NeutralLoss,
-                                         c("UnimodId", "Name", "MonoMass")]
+    unimod_data <- modifications[!modifications$NeutralLoss,
+                                 c("UnimodId", "Name", "MonoMass")]
     unimod_data <- unimod_data[!duplicated(unimod_data$Name), ]
 
     # Valid lookup
@@ -192,8 +194,8 @@ test_that(".lookupByName finds modifications correctly", {
 })
 
 test_that(".lookupByMass finds modifications correctly", {
-    unimod_data <- PTMods::modifications[!PTMods::modifications$NeutralLoss,
-                                         c("UnimodId", "Name", "MonoMass")]
+    unimod_data <- modifications[!modifications$NeutralLoss,
+                                 c("UnimodId", "Name", "MonoMass")]
     unimod_data <- unimod_data[!duplicated(unimod_data$Name), ]
 
     # Valid lookup with tolerance
@@ -213,8 +215,8 @@ test_that(".lookupByMass finds modifications correctly", {
 })
 
 test_that(".lookupByUnimodId finds modifications correctly", {
-    unimod_data <- PTMods::modifications[!PTMods::modifications$NeutralLoss,
-                                         c("UnimodId", "Name", "MonoMass")]
+    unimod_data <- modifications[!modifications$NeutralLoss,
+                                 c("UnimodId", "Name", "MonoMass")]
     unimod_data <- unimod_data[!duplicated(unimod_data$Name), ]
 
     # Valid lookup
