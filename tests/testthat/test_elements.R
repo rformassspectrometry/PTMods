@@ -1,5 +1,3 @@
-context("elements")
-
 test_that(".elements", {
     skip_if_not_installed("xml2")
     x <- xml2::read_xml(paste0(
@@ -17,5 +15,5 @@ test_that(".elements", {
         row.names=c("H", "2H"),
         stringsAsFactors=FALSE
     )
-    expect_equal(unimod:::.elements(x), d)
+    expect_equal(PTMods:::.elements(x), d)
 })

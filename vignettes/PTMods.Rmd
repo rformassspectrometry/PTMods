@@ -1,0 +1,152 @@
+---
+title: "The PTMods package: a package to handle post-translational modifications"
+output:
+    BiocStyle::html_document:
+        toc_float: true
+vignette: >
+    %\VignetteIndexEntry{The PTMods package}
+    %\VignetteEngine{knitr::rmarkdown}
+    %\VignetteEncoding{UTF-8}
+    %\VignettePackage{PTMods}
+    %\VignetteDepends{PTMods}
+---
+
+```{r style, echo = FALSE, results = 'asis', message=FALSE}
+BiocStyle::markdown()
+```
+
+**Package**: `r Biocpkg("PTMods")`<br />
+**Authors**: `r packageDescription("PTMods")[["Author"]] `<br />
+**Last modified:** `r file.info("PTMods.Rmd")$mtime`<br />
+**Compiled**: `r date()`
+
+# Introduction
+
+Post-translational modifications (PTMs) are covalent modifications
+that happen after protein biosynthesis and that can have a major
+influence on protein function. PTMs are biologically very important
+and can be identified in a high-throughput way using
+mass spectrometry.
+
+The `PTMods` package focuses on handling such PTMs and works in
+conjuction with the `r BiocStyle::Biocpkg("PSMatch")` and
+`r BiocStyle::Biocpkg("Spectra")` packages. It distributes PTMs from
+the Unimod database and allows to convert PTM annotations between
+multiple annotation formats.
+
+```{r lib}
+library(PTMods)
+```
+
+## Installation
+
+The package can be installed from Bioconductor with
+
+```{r install, eval = FALSE}
+if (!require("BiocManager", quietly = TRUE))
+    install.packages("BiocManager")
+
+BiocManager::install("PTMods")
+```
+
+Alternatively, altough this isn't recommended in general, it can also
+be installed from Github.
+
+```{r install2o, eval = FALSE}
+BiocManager::install("RforMassSpectrometry/PTMods")
+```
+
+# The Unimod database
+
+The `PTMods` package distributes the data from the Unimod database:
+
+> Unimod is a public domain database, distributed under a
+> [copyleft licence](http://www.gnu.org/licenses/license-list.html): "a
+> copyright notice that permits unrestricted redistribution and
+> modification, provided that all copies and derivatives retain the same
+> permissions."
+>
+> The aim is to create a community supported, comprehensive database of
+> protein modifications for mass spectrometry applications. That is,
+> accurate and verifiable values, derived from elemental compositions,
+> for the mass differences introduced by all types of natural and
+> artificial modifications. Other important information includes any
+> mass change, (neutral loss), that occurs during MS/MS analysis, and
+> site specificity, (which residues are susceptible to modification and
+> any constraints on the position of the modification within the protein
+> or peptide).
+
+Source: http://www.unimod.org/unimod_help.html
+
+The package provides the following objects.
+
+- The `modifications` dataframe describing `r
+  nrow(PTMods::modifications)` PTMs from the unimod database:
+
+```{r modifications}
+head(modifications)
+```
+
+- The `aminoacids` dataframe describing `r nrow(PTMods::aminoacids)`
+  amino acids from the unimod database:
+
+
+```{r aminoacids}
+head(aminoacids)
+```
+- The `elements` data.frame describing `r nrow(PTMods::elements)`
+  chemical elements from the unimod database:
+
+```{r elements}
+head(elements)
+```
+
+Note that the goal of `PTMods` is not to place this information in a
+biological context. There are other sources of biological information
+about post-translational modifications:
+
+
+- [RESID](https://proteininformationresource.org/resid/resid.shtml)
+  for post-translational modifications
+- [Uniprot/Swiss-Prot](https://www.uniprot.org/) protein sequence
+  database
+- [Prosite](https://prosite.expasy.org/) database of protein families
+  and domains
+- [Glycan Database](https://www.functionalglycomics.org/) from the
+  Consortium for Functional Glycomics
+- [PhosphoDB](https://phosphodb.hecklab.com/site/index) and
+  [PhosphoSitePlus](https://www.phosphosite.org/homeAction.action) for
+  phosphoryations
+- ...
+
+Other compilations of modifications with a focus on mass spectrometry:
+
+- [Delta Mass](https://abrf.org/resources/delta-mass/)
+- [FindMod](https://web.expasy.org/findmod/)
+- ...
+
+# Different types of PTM annotations
+
+PTMs can be annotated using different syntaxes:
+
+- The *deltaMass* syntax that describes the mass shift of an amino
+  acid such as for example `"M[+15.994915]PEPTIDE"` for an oxidation.
+- The *unimodId* that uses the unimod identifier such as for example
+  `"M[UNIMOD:35]PEPTIDE"` for an oxidation.
+- The modification's name, such as for example `"M[Oxidation]PEPTIDE"`.
+
+
+The `convertAnnotion()` function can be used to convert between these
+different syntaxes:
+
+```{r convertAnnotion}
+convertAnnotation("M[Oxidation]PEPTIDE", convertToStyle = "deltaMass")
+convertAnnotation("M[Oxidation]PEPTIDE", convertToStyle = "unimodId")
+convertAnnotation("M[+15.995]PEPTIDE", convertToStyle = "name")
+```
+
+# Session information
+
+```{r si}
+sessionInfo()
+```

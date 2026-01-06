@@ -10,7 +10,10 @@
     elements <- .elements(xml)
     aminoacids <- .aminoacids(xml)
     modifications <- .modifications(xml)
-
+    attr(modifications, "Created") <-
+        attr(elements, "Created") <-
+        attr(aminoacids, "Created") <-
+        date()
     save(elements, file=file.path(path, "elements.RData"),
          compress="xz")
     save(aminoacids, file=file.path(path, "aminoacids.RData"),
@@ -27,7 +30,7 @@
 #' follows:
 #'
 #' ```
-#' unimod:::.createDataSets()
+#' PTMods:::.createDataSets()
 #' ```
 #'
 #' @format A `data.frame` with 4 columns (Name, FullName, AvgMass, MonoMass) for
@@ -46,7 +49,7 @@
 #' follows:
 #'
 #' ```
-#' unimod:::.createDataSets()
+#' PTMods:::.createDataSets()
 #' ```
 #'
 #' @format A `data.frame` with 11 columns (OneLetter, ThreeLetter, FullName,
@@ -66,7 +69,7 @@
 #' follows:
 #'
 #' ```
-#' unimod:::.createDataSets()
+#' PTMods:::.createDataSets()
 #' ```
 #'
 #' @format A `data.frame` with 15 columns (Id (created by

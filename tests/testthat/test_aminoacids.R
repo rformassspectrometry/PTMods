@@ -1,5 +1,3 @@
-context("aminoacids")
-
 test_that(".aminoacids", {
     skip_if_not_installed("xml2")
     x <- xml2::read_xml(paste0(
@@ -35,5 +33,5 @@ test_that(".aminoacids", {
         row.names=c("A", "C"),
         stringsAsFactors=FALSE
     )
-    expect_equal(unimod:::.aminoacids(x), d)
+    expect_equal(PTMods:::.aminoacids(x), d)
 })

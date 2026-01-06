@@ -1,4 +1,4 @@
 library("testthat")
-library("unimod")
+library("PTMods")
 
-test_check("unimod")
+test_check("PTMods")

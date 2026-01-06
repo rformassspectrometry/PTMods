@@ -1,3 +1,6 @@
+utils::globalVariables("aminoacids")
+
+
 #' Calculate mass for a given aminoacid sequence
 #'
 #' @param x character, sequence
@@ -136,7 +139,7 @@
             stop(
                 paste0(fixedModifications[is.na(i)], collapse=", "),
                 ifelse(sum(is.na(i)) == 1L, " is ", " are "),
-                "not part of the unimod::modifications data set!"
+                "not part of the PTMods::modifications data set!"
             )
         }
         isUnimod <- TRUE
@@ -176,4 +179,3 @@
     attr(m, "sequence") <- x
     m
 }
-

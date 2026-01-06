@@ -1,26 +1,25 @@
-Package: unimod
+Package: PTMods
 Type: Package
-Version: 0.3
-Title: Managing amino acid modifications for mass spectrometry
-Author: Laurent Gatto and Sebastian Gidd
-Authors@R: c(person(given = "Laurent", family = "Gatto",
-	            email = "laurent.gatto@uclouvain.be", role = c("aut")),
-             person("Sebastian", "Gibb", role=c("aut", "cre"),
-              email="mail@sebastiangibb.de"),
-            person(given = "Guillaume", family = "Deflandre",
-            email = "guillaume.deflandre@uclouvain.be",
-            role = "ctb",
-            comment = c(ORCID = "0009-0008-1257-2416")))
+Version: 0.99.0
+Title: Managing post-translational modifications in R
+Authors@R: c(person("Laurent", "Gatto", role = "aut",
+                    email = "laurent.gatto@uclouvain.be",
+                    comment = c(ORCID = "0000-0002-1520-2268")),
+             person("Sebastian", "Gibb", role = "aut",
+                    email = "mail@sebastiangibb.de",
+                    comment = c(ORCID = "0000-0001-7406-4443")),
+             person("Guillaume", "Deflandre", role = "cre",
+                    email = "guillaume.deflandre@uclouvain.be",
+                    comment = c(ORCID = "0009-0008-1257-2416")))
 Description: An interface to the community supported database for
-	     amino acide/protein modifications using mass
-	     spectrometry.
-Depends: R (>= 3.5), methods
-Suggests: xml2, testthat, knitr, Biostrings
+             amino acid/protein modifications using mass
+             spectrometry.
+Depends: R (>= 4.5.0), methods
+Suggests: xml2, testthat, knitr, BiocStyle
 License: GPL-3
 VignetteBuilder: knitr
 biocViews: Proteomics, MassSpectrometry
-BugReports: https://github.com/ComputationalProteomicsUnit/unimod/issues
-URL: https://github.com/ComputationalProteomicsUnit/unimod
+BugReports: https://github.com/RforMassSpectrometry/unimod/issues
+URL: https://github.com/RforMassSpectrometry/unimod
 RoxygenNote: 7.3.3
-LazyData: true
 Encoding: UTF-8

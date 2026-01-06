@@ -23,7 +23,7 @@ It was created as
 follows:
 
 ```
-unimod:::.createDataSets()
+PTMods:::.createDataSets()
 ```
 }
 \examples{

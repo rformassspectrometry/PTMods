@@ -1,9 +1,15 @@
-# unimod 0.x
+# PTMods 0.99
 
-## unimod 0.3 
+## PTMods 0.99.0
 
-- Add `convertAnnotation()` to parse and convert between 3 PTM annotation 
-  styles. Currently only supports `unimodId`, unimod `name` and `deltaMass`.
+- Bump version for Bioconductor submission
+
+## PTMods 0.3
+
+- Update PTMods datasets [2026-01-02 Fri].
+- Rename the package to `PTMods` and add vignette.
+- Add `convertAnnotation()` to parse and convert between 3 PTM annotation
+  styles. Currently supports `unimodId`, unimod `name` and `deltaMass`.
 
 ## unimod 0.2 [2023-02-05]
 
