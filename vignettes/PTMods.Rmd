@@ -38,6 +38,11 @@ multiple annotation formats.
 library(PTMods)
 ```
 
+```{r loaddata, echo = FASLE}
+data(aminoacids)
+data(modifications)
+data(elements)
+```
 ## Installation
 
 The package can be installed from Bioconductor with
@@ -80,24 +85,23 @@ Source: http://www.unimod.org/unimod_help.html
 
 The package provides the following objects.
 
-- The `modifications` dataframe describing `r
-  nrow(PTMods::modifications)` PTMs from the unimod database:
+- The `modifications` dataframe describing `r nrow(modifications)`
+  PTMs from the unimod database:
 
 ```{r modifications}
 data(modifications)
 head(modifications)
 ```
 
-- The `aminoacids` dataframe describing `r nrow(PTMods::aminoacids)`
-  amino acids from the unimod database:
-
+- The `aminoacids` dataframe describing `r nrow(aminoacids)` amino
+  acids from the unimod database:
 
 ```{r aminoacids}
 data(aminoacids)
 head(aminoacids)
 ```
-- The `elements` data.frame describing `r nrow(PTMods::elements)`
-  chemical elements from the unimod database:
+- The `elements` data.frame describing `r nrow(elements)` chemical
+  elements from the unimod database:
 
 ```{r elements}
 data(elements)
