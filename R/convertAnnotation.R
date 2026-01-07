@@ -24,6 +24,8 @@ utils::globalVariables("modifications")
 #'
 #' @author Guillaume Deflandre <guillaume.deflandre@uclouvain.be>
 #'
+#' @importFrom utils data
+#'
 #' @details
 #' The function handles three main conversion scenarios:
 #'

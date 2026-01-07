@@ -6,3 +6,4 @@
 ^notes$
 ^.*\.Rproj$
 ^\.Rproj\.user$
+.github
