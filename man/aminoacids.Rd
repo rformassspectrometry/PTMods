@@ -13,7 +13,7 @@ columns contain the number of elements that build the aminoacid.
 Taken from the unimod database: http://www.unimod.org/xml/unimod.xml.
 }
 \usage{
-aminoacids
+data("aminoacids")
 }
 \description{
 `data.frame` of aminoacids from the unimod database.

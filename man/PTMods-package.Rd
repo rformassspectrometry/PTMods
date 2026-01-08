@@ -16,8 +16,8 @@ PTM annotations between multiple formats.
 \seealso{
 Useful links:
 \itemize{
-  \item \url{https://github.com/RforMassSpectrometry/unimod}
-  \item Report bugs at \url{https://github.com/RforMassSpectrometry/unimod/issues}
+  \item \url{https://github.com/RforMassSpectrometry/PTMods}
+  \item Report bugs at \url{https://github.com/RforMassSpectrometry/PTMods/issues}
 }
 
 }

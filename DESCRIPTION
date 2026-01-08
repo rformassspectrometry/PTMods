@@ -1,7 +1,7 @@
 Package: PTMods
 Type: Package
 Version: 0.99.0
-Title: Managing post-translational modifications in R
+Title: Managing Post-Translational Modifications in R
 Authors@R: c(person("Laurent", "Gatto", role = "aut",
                     email = "laurent.gatto@uclouvain.be",
                     comment = c(ORCID = "0000-0002-1520-2268")),
@@ -15,11 +15,11 @@ Description: An interface to the community supported database for
              amino acid/protein modifications using mass
              spectrometry.
 Depends: R (>= 4.5.0), methods
-Suggests: xml2, testthat, knitr, BiocStyle
+Suggests: xml2, testthat, knitr, BiocStyle, Biostrings
 License: GPL-3
 VignetteBuilder: knitr
 biocViews: Proteomics, MassSpectrometry
-BugReports: https://github.com/RforMassSpectrometry/unimod/issues
-URL: https://github.com/RforMassSpectrometry/unimod
+BugReports: https://github.com/RforMassSpectrometry/PTMods/issues
+URL: https://github.com/RforMassSpectrometry/PTMods
 RoxygenNote: 7.3.3
 Encoding: UTF-8

@@ -33,6 +33,7 @@
 #' PTMods:::.createDataSets()
 #' ```
 #'
+#' @usage data("elements")
 #' @format A `data.frame` with 4 columns (Name, FullName, AvgMass, MonoMass) for
 #' the chemical elements.
 #' @source Taken from the unimod database: http://www.unimod.org/xml/unimod.xml.
@@ -52,6 +53,7 @@
 #' PTMods:::.createDataSets()
 #' ```
 #'
+#' @usage data("aminoacids")
 #' @format A `data.frame` with 11 columns (OneLetter, ThreeLetter, FullName,
 #' AvgMass, MonoMass, H, C, N, O S, Se) for the aminoacids. The H/C/N/O/S/Se
 #' columns contain the number of elements that build the aminoacid.
@@ -72,6 +74,7 @@
 #' PTMods:::.createDataSets()
 #' ```
 #'
+#' @usage data("modifications")
 #' @format A `data.frame` with 15 columns (Id (created by
 #' Name:(Position-)Site(:NeutralLoss) because unimod id is not unique),
 #' UnimodId, Name, Description, AvgMass, MonoMass, Site, Position,

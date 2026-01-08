@@ -12,7 +12,7 @@ the chemical elements.
 Taken from the unimod database: http://www.unimod.org/xml/unimod.xml.
 }
 \usage{
-elements
+data("elements")
 }
 \description{
 `data.frame` of chemical elements from the unimod database.

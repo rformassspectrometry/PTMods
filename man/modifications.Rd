@@ -15,7 +15,7 @@ Hidden) for the modifications.
 Taken from the unimod database: http://www.unimod.org/xml/unimod.xml.
 }
 \usage{
-modifications
+data("modifications")
 }
 \description{
 `data.frame` of modifications from the unimod database.
