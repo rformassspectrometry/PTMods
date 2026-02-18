@@ -80,20 +80,11 @@ convertAnnotation <- function(x,
 
     convertToStyle <- match.arg(convertToStyle)
 
-    # Load modifications data once into the local environment
-    data(modifications, envir = environment())
-
-    # Prepare unimodData once for all sequences
-    unimodData <- modifications[!modifications$NeutralLoss,
-                                c("UnimodId", "Name", "MonoMass")]
-    unimodData <- unimodData[!duplicated(unimodData$Name), ]
-
     # Apply .convertAnnotation to each element
     vapply(x,
            function(seq) .convertAnnotation(seq,
                                            convertToStyle = convertToStyle,
-                                           massTolerance = massTolerance,
-                                           unimodData = unimodData),
+                                           massTolerance = massTolerance),
            character(1),
            USE.NAMES = FALSE)
 }
@@ -104,13 +95,18 @@ convertAnnotation <- function(x,
 #' @noRd
 .convertAnnotation <- function(x,
                               convertToStyle = c("deltaMass", "unimodId", "name"),
-                              massTolerance = 0.01,
-                              unimodData) {
+                              massTolerance = 0.01) {
     if (!is.character(x) || length(x) != 1L) {
         stop("x must be a single character string")
     }
 
     convertToStyle <- match.arg(convertToStyle)
+    data(modifications, envir = environment())
+
+    # Get Unimod data - simplified without priority rules
+    unimodData <- modifications[!modifications$NeutralLoss,
+                                         c("UnimodId", "Name", "MonoMass")]
+    unimodData <- unimodData[!duplicated(unimodData$Name), ]
 
     # Find all modifications in the sequence
     # Pattern matches: [content] where content is not empty
