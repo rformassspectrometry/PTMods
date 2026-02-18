@@ -1,5 +1,16 @@
 # PTMods 0.99
 
+## PTMods 0.99.2
+
+- Update PTMods datasets [2026-02-18].
+- Improved performance of `convertAnnotation()` by calling the `modifications`
+dataset before `.convertAnnotation()`.
+
+## PTMods 0.99.1
+
+- Bump for re-build in Bioconductor submission (due to missing maintainer
+e-mail address)
+
 ## PTMods 0.99.0
 
 - Bump version for Bioconductor submission
