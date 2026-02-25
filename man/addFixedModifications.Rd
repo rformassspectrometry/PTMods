@@ -32,7 +32,7 @@ verbatim (e.g. `[Phospho]` or `[UNIMOD:21]`).
 \examples{
 addFixedModifications("ATCK", fixedModifications = c(Nterm = 304, C = 57.02146))
 addFixedModifications("ATSK", fixedModifications = c(A = -42, S = 79.966331))
-addFixedModifications("ATK", fixedModifications = c(T = "Phospho", A = "UNIMOD:1"))
+addFixedModifications("ATK", fixedModifications = c(T = "Phospho", A = 42))
 addFixedModifications("A[+42]TK", fixedModifications = c(T = "Phospho"))
 addFixedModifications("AT[+79.966]AK", fixedModifications = c(A = 42))
 addFixedModifications("ATA[+79.966]K", fixedModifications = c(A = 42))
