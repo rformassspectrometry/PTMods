@@ -2,6 +2,8 @@
 
 ## PTMods 0.99.2
 
+- Added `addModifications()`, `addFixedModifications()`,
+`addVariableModifications()`, `getCanonicalSequence()` and useful PTM utils.
 - Update PTMods datasets [2026-02-18].
 - Improved performance of `convertAnnotation()` by calling the `modifications`
 dataset before `.convertAnnotation()`.

@@ -186,15 +186,15 @@ convertAnnotation <- function(x,
 #'
 #' @examples
 #' # Detect Unimod ID format
-#' .detectModificationType("UNIMOD:35")
+#' PTMods:::.detectModificationType("UNIMOD:35")
 #' # Result: "unimodId"
 #'
 #' # Detect delta mass format
-#' .detectModificationType("+15.995")
+#' PTMods:::.detectModificationType("+15.995")
 #' # Result: "deltaMass"
 #'
 #' # Detect name format
-#' .detectModificationType("Oxidation")
+#' PTMods:::.detectModificationType("Oxidation")
 #' # Result: "name"
 #'
 #' @noRd
