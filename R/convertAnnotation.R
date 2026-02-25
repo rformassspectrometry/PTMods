@@ -205,7 +205,7 @@ convertAnnotation <- function(x,
     }
 
     # Check for mass shift (+15.995 or -17.026)
-    if (grepl("^[+-][0-9]+(\\.[0-9]+)?$", mod_string)) {
+    if (grepl("^[+-]?[0-9]+(\\.[0-9]+)?$", mod_string)) {
         return("deltaMass")
     }
 
@@ -277,14 +277,10 @@ convertAnnotation <- function(x,
 
     # Check if lookup was successful
     if (is.null(intermediate)) {
-        if (inputType == "deltaMass" & outputType == "deltaMass") {
-            return(modContent)
-        } else {
-            warning(paste0(
-                "Could not find Unimod entry for modification ",
-                modContent, ", see `?modifications`"))    
-            return(NULL)
-        }
+        warning(paste0(
+            "Could not find Unimod entry for modification ",
+            modContent, ", see `?modifications`"))    
+        return(NULL)
     }
 
     # Step 2: Convert intermediate to output format
