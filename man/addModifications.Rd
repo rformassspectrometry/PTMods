@@ -8,7 +8,7 @@ addModifications(
   sequences,
   fixedModifications = NULL,
   variableModifications = NULL,
-  annotationStyle = c("deltaMass", "unimodId", "name"),
+  convertToStyle = NULL,
   ...
 )
 }
@@ -30,10 +30,11 @@ Names correspond to single-letter amino acid codes. If `character`,
 values must be in UniMod name or UniMod ID format. See
 [addVariableModifications()] for full details. Set to `NULL` to skip.}
 
-\item{annotationStyle}{`character(1)`. Controls the annotation format of
+\item{convertToStyle}{`character(1)`. Controls the annotation format of
 modifications in the returned sequences. One of:
 \describe{
-  \item{`"deltaMass"`}{(default) Delta mass notation, e.g. `[+79.966]`.}
+  \item{`NULL`}{(default) Same as input modification style.}
+  \item{`"deltaMass"`}{Delta mass notation, e.g. `[+79.966]`.}
   \item{`"unimodId"`}{UniMod ID notation, e.g. `[UNIMOD:21]`.}
   \item{`"name"`}{UniMod name notation, e.g. `[Phospho]`.}
 }
@@ -87,7 +88,7 @@ addModifications(
 addModifications(
     "ATSK",
     variableModifications = c(S = 79.966331, T = 79.966331),
-    annotationStyle = "name"
+    convertToStyle = "name"
 )
 
 ## N-terminal fixed modification with variable modifications
