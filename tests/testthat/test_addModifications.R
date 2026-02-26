@@ -40,7 +40,7 @@ test_that("addModifications returns annotations in name style", {
     result <- addModifications(
         "ATSK",
         variableModifications = c(S = 79.966331, T = 79.966331),
-        annotationStyle = "name",
+        convertToStyle = "name",
         maxMods = 1
     )
     expect_true("ATSK" %in% result)
@@ -52,7 +52,7 @@ test_that("addModifications returns annotations in unimodId style", {
     result <- addModifications(
         "ATSK",
         variableModifications = c(S = 79.966331, T = 79.966331),
-        annotationStyle = "unimodId",
+        convertToStyle = "unimodId",
         maxMods = 1
     )
     expect_true("ATSK" %in% result)
