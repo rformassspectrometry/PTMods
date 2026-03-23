@@ -15,7 +15,7 @@ Description: An interface to the community supported database for
              amino acid/protein modifications using mass
              spectrometry.
 Depends: R (>= 4.5.0), methods
-Suggests: xml2, testthat, knitr, BiocStyle, Biostrings
+Suggests: xml2, testthat, knitr, BiocStyle, Biostrings, PSMatch
 License: GPL-3
 VignetteBuilder: knitr
 biocViews: Proteomics, MassSpectrometry

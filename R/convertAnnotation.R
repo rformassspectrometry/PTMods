@@ -186,15 +186,15 @@ convertAnnotation <- function(x,
 #'
 #' @examples
 #' # Detect Unimod ID format
-#' .detectModificationType("UNIMOD:35")
+#' PTMods:::.detectModificationType("UNIMOD:35")
 #' # Result: "unimodId"
 #'
 #' # Detect delta mass format
-#' .detectModificationType("+15.995")
+#' PTMods:::.detectModificationType("+15.995")
 #' # Result: "deltaMass"
 #'
 #' # Detect name format
-#' .detectModificationType("Oxidation")
+#' PTMods:::.detectModificationType("Oxidation")
 #' # Result: "name"
 #'
 #' @noRd
@@ -205,7 +205,7 @@ convertAnnotation <- function(x,
     }
 
     # Check for mass shift (+15.995 or -17.026)
-    if (grepl("^[+-][0-9]+(\\.[0-9]+)?$", mod_string)) {
+    if (grepl("^[+-]?[0-9]+(\\.[0-9]+)?$", mod_string)) {
         return("deltaMass")
     }
 
@@ -214,7 +214,7 @@ convertAnnotation <- function(x,
 }
 
 
-#' Convert Modification Between Formats
+#' Convert modification between formats
 #'
 #' Converts a single modification between different annotation formats using
 #' the Unimod database.
@@ -233,17 +233,18 @@ convertAnnotation <- function(x,
 #'
 #' @examples
 #' # Load Unimod data
-#' unimodData <- PTMods::modifications[!PTMods::modifications$NeutralLoss,
+#' data(modifications)
+#' unimodData <- modifications[!modifications$NeutralLoss,
 #'                                      c("UnimodId", "Name", "MonoMass")]
 #' unimodData <- unimodData[!duplicated(unimodData$Name), ]
 #'
 #' # Convert from name to delta mass
-#' .convertModificationFormat("Oxidation", "name", "deltaMass",
+#' PTMods:::.convertModificationFormat("Oxidation", "name", "deltaMass",
 #'                           unimodData, 0.01)
 #' # Result: "+15.994915"
 #'
 #' # Convert from delta mass to name
-#' .convertModificationFormat("+15.995", "deltaMass", "name",
+#' PTMods:::.convertModificationFormat("+15.995", "deltaMass", "name",
 #'                           unimodData, 0.01)
 #' # Result: "Oxidation"
 #'
@@ -278,7 +279,7 @@ convertAnnotation <- function(x,
     if (is.null(intermediate)) {
         warning(paste0(
             "Could not find Unimod entry for modification ",
-            modContent, ", see `?modifications`"))
+            modContent, ", see `?modifications`"))    
         return(NULL)
     }
 

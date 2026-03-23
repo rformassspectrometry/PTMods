@@ -32,7 +32,8 @@ The `PTMods` package focuses on handling such PTMs and works in
 conjuction with the `r BiocStyle::Biocpkg("PSMatch")` and
 `r BiocStyle::Biocpkg("Spectra")` packages. It distributes PTMs from
 the Unimod database and allows to convert PTM annotations between
-multiple annotation formats.
+multiple annotation formats. The package also allows the seemless addition of
+fixed and/or variable PTMs using different annotation formats.
 
 ```{r lib}
 library(PTMods)
@@ -48,8 +49,9 @@ data(elements)
 The package can be installed from Bioconductor with
 
 ```{r install, eval = FALSE}
-if (!require("BiocManager", quietly = TRUE))
+if (!require("BiocManager", quietly = TRUE)) {
     install.packages("BiocManager")
+}
 
 BiocManager::install("PTMods")
 ```
@@ -82,6 +84,9 @@ The `PTMods` package distributes the data from the Unimod database:
 > or peptide).
 
 Source: http://www.unimod.org/unimod_help.html
+We try to keep the data up to date with the Unimod database. If you believe it
+isn't, do not hesitate to contact us through an 
+[issue on the GitHub page](https://github.com/rformassspectrometry/PTMods/issues/new).
 
 The package provides the following objects.
 
@@ -150,6 +155,64 @@ different syntaxes:
 convertAnnotation("M[Oxidation]PEPTIDE", convertToStyle = "deltaMass")
 convertAnnotation("M[Oxidation]PEPTIDE", convertToStyle = "unimodId")
 convertAnnotation("M[+15.995]PEPTIDE", convertToStyle = "name")
+```
+# Add modifications to a sequence
+
+PTMs may be added (in any of the formats mentioned above) using the
+`addFixedModifications()` and `addVariableModifications()` functions.
+
+The latter will provide all combinations of possible sequences with the given
+modifications. 
+
+```{r basicAddMod}
+addFixedModifications("MPEPTIDE",
+    fixedModifications = c(M = "Oxidation")
+)
+addVariableModifications("MPEPTIDE",
+    variableModifications = c(M = -15.995, T = "Phospho")
+)
+```
+
+For fixed modifications, N- and C-terminal modifications are also accepted:
+
+```{r Nterm}
+addFixedModifications("MPEPT[Phospho]IDE",
+    fixedModifications = c(Nterm = 304)
+)
+```
+
+Notice that for both functions, the input sequence is kept as is (keeping the
+already present PTM "Phospho") whilst the notation style provided is also
+untouched. Combined with `convertAnnotation()`, it is possible to convert the
+sequence into the preferred notation style if need be.
+
+For variable modifications, it is possible to limit the number of possible
+combinations using the `maxMods` parameter:
+
+```{r maxMods}
+addVariableModifications("MPEPTIDE",
+    variableModifications = c(M = -15.995, T = "Phospho"),
+    maxMods = 1
+)
+```
+
+Both fixed and variable modifications can be called at once using
+`addModifications()`. Use the `convertToStyle` parameter to convert the final
+sequence into your preferred notation style if need be:
+
+```{r addMod}
+addModifications("MPEPTIDE",
+    fixedModifications = c(M = "Oxidation"),
+    variableModifications = c(T = 79.966),
+    convertToStyle = "unimodId"
+)
+```
+
+To remove any and all modifications on a sequence, use
+`getCanonicalSequence()`:
+
+```{r getCanonicalSeq}
+getCanonicalSequence("[+304]-M[Oxidation]PEPT[UNIMOD:21]IDE")
 ```
 
 # Session information
