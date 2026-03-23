@@ -13,8 +13,8 @@ We are open to suggestions on how to improve the package at all times.
 ## Suggested packages
 
 We highly suggest combining `PTMods` with 
-`[PSMatch](https://github.com/rformassspectrometry/PSMatch)` and 
-`[Spectra](https://github.com/rformassspectrometry/Spectra)` for a more
+[PSMatch](https://github.com/rformassspectrometry/PSMatch) and 
+[Spectra](https://github.com/rformassspectrometry/Spectra) for a more
 complete approach to analysing mass spectrometry data in R. 
 
 ## Installation instructions
