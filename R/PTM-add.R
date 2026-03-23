@@ -49,12 +49,12 @@
 #'   modifications.
 #'
 #' @seealso
-#' * [addFixedModifications()] for applying fixed modifications.
+#' * \code{\link{addFixedModifications}} for applying fixed modifications.
 #'
-#' * [addVariableModifications()] for enumerating variable modification
+#' * \code{\link{addVariableModifications}} for enumerating variable modification
 #'   combinations.
 #'
-#' * [convertAnnotation()] for converting between modification annotation
+#' * \code{\link{convertAnnotation}} for converting between modification annotation
 #'   styles.
 #'
 #' @author Guillaume Deflandre <guillaume.deflandre@uclouvain.be>
@@ -93,7 +93,7 @@
 #' ## N-terminal fixed modification with variable modifications
 #' addModifications(
 #'     "ATSK",
-#'     fixedModifications    = c(Nterm = 304),
+#'     fixedModifications = c(Nterm = 304),
 #'     variableModifications = c(S = 79.966331)
 #' )
 addModifications <- function(sequences,
@@ -117,7 +117,7 @@ addModifications <- function(sequences,
         sequences <- addVariableModifications(
             sequences,
             variableModifications = variableModifications,
-            maxMods               = maxMods
+            maxMods = maxMods
         )
     }
 
