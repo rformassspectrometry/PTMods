@@ -109,6 +109,19 @@ test_that("addVariableModifications returns original if maxMods = 0", {
     expect_equal(result, "ATSK")
 })
 
+test_that("addVariableModifications applies two mods to same residue consecutively", {
+    result <- "ATK" |>
+        addVariableModifications(c(T = "+57.024")) |>
+        addVariableModifications(c(T = "Phospho"))
+    ## All four combinations: unmodified, first mod only, second mod only,
+    ## and both mods stacked on T
+    expect_length(result, 4)
+    expect_true("ATK" %in% result)
+    expect_true("AT[+57.024]K" %in% result)
+    expect_true("AT[Phospho]K" %in% result)
+    expect_true("AT[+57.024][Phospho]K" %in% result)
+})
+
 test_that("addVariableModifications returns original with NULL mods", {
     result <- addVariableModifications("ATSK",
         variableModifications = NULL

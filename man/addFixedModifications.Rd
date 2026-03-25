@@ -4,7 +4,7 @@
 \alias{addFixedModifications}
 \title{Add fixed modifications}
 \usage{
-addFixedModifications(sequences, fixedModifications = NULL)
+addFixedModifications(sequences, fixedModifications = c(C = 57.021464))
 }
 \arguments{
 \item{sequences}{Character vector. Peptide sequences that may have
@@ -14,7 +14,15 @@ modifications or not.}
 `character` is given, values must be in UniMod name or UniMod ID format
 (e.g. `"Phospho"`, `"UNIMOD:21"`). The annotation style of the values is
 preserved in the output.
-Specifies which fixed modifications are applied to which amino acids.}
+Specifies which fixed modifications are applied to which amino acids. By
+default, carbamidomethylation is applied (+57.021464 on cysteines).
+Supplying multiple modifications for the same amino acid is not supported;
+call the function consecutively instead:
+\preformatted{
+  "ATK" |>
+    addFixedModifications(c(T = "+57.024")) |>
+    addFixedModifications(c(T = "Phospho"))
+}}
 }
 \value{
 A named list of character strings with all fixed modifications
@@ -30,12 +38,18 @@ deltaMass notation (e.g. `[+79.966331]`), while character values are used
 verbatim (e.g. `[Phospho]` or `[UNIMOD:21]`).
 }
 \examples{
+addFixedModifications("ATCK")
 addFixedModifications("ATCK", fixedModifications = c(Nterm = 304, C = 57.02146))
 addFixedModifications("ATSK", fixedModifications = c(A = -42, S = 79.966331))
 addFixedModifications("ATK", fixedModifications = c(T = "Phospho", A = 42))
 addFixedModifications("A[+42]TK", fixedModifications = c(T = "Phospho"))
 addFixedModifications("AT[+79.966]AK", fixedModifications = c(A = 42))
 addFixedModifications("ATA[+79.966]K", fixedModifications = c(A = 42))
+
+## Apply two modifications to the same residue consecutively
+"ATK" |>
+    addFixedModifications(c(T = "+57.024")) |>
+    addFixedModifications(c(T = "Phospho"))
 }
 \author{
 Guillaume Deflandre <guillaume.deflandre@uclouvain.be>

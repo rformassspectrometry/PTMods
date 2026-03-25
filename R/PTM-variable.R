@@ -17,6 +17,13 @@
 #' (e.g. `"Phospho"`, `"UNIMOD:21"`). The annotation style of the values is
 #' preserved in the output.
 #' Specifies which variable modifications are used on which amino acids.
+#' Supplying multiple modifications for the same amino acid is not supported;
+#' call the function consecutively instead:
+#' \preformatted{
+#'   seq |>
+#'     addVariableModifications(c(T = "+57.024")) |>
+#'     addVariableModifications(c(T = "Phospho"))
+#' }
 #'
 #' @param maxMods Numeric. Indicates how many modifications can be applied
 #' at once.
@@ -31,10 +38,29 @@
 #' @export
 #'
 #' @examples
-#' addVariableModifications("APGHKA", variableModifications = c(A = 4, K = 5, S = 8), maxMods = 2)
-#' addVariableModifications("APGHKA", variableModifications = c(A = 4, K = 5, S = 8), maxMods = 3)
-#' addVariableModifications(c("ATK", "PAK"), variableModifications = c(T = "Phospho", A = "UNIMOD:1"))
-#' addVariableModifications("A[+10]KT[-5]", variableModifications = c(A = -20, T = "Phospho"))
+#' addVariableModifications(
+#'     "APGHKA",
+#'     variableModifications = c(A = 4, K = 5, S = 8),
+#'     maxMods = 2
+#' )
+#' addVariableModifications(
+#'     "APGHKA",
+#'     variableModifications = c(A = 4, K = 5, S = 8),
+#'     maxMods = 3
+#' )
+#' addVariableModifications(
+#'     c("ATK", "PAK"),
+#'     variableModifications = c(T = "Phospho", A = "UNIMOD:1")
+#' )
+#' addVariableModifications(
+#'     "A[+10]KT[-5]",
+#'     variableModifications = c(A = -20, T = "Phospho")
+#' )
+#'
+#' ## Apply two modifications to the same residue consecutively
+#' "ATK" |>
+#'     addVariableModifications(c(T = "+57.024")) |>
+#'     addVariableModifications(c(T = "Phospho"))
 addVariableModifications <- function(sequences,
                                      variableModifications = NULL,
                                      maxMods = Inf) {
@@ -51,30 +77,70 @@ addVariableModifications <- function(sequences,
 #'
 #' @param variableModifications Named `numeric` or `character`. If a
 #' `character` is given, it needs to be in unimodId or name format as
-#' specificied in `convertAnntotation`.
+#' specified in `convertAnnotation`.
 #' Specifies which variable modifications are used on which amino acids.
+#' Supplying multiple modifications for the same amino acid is not supported;
+#' call `addVariableModifications()` consecutively instead:
+#' \preformatted{
+#'   seq |>
+#'     addVariableModifications(c(T = "+57.024")) |>
+#'     addVariableModifications(c(T = "Phospho"))
+#' }
 #'
 #' @param maxMods Numeric. Indicates how many modifications can be applied at
 #' once.
 #'
-#' @return list with all possible combinations of modifications
+#' @return A `character()` vector with all possible combinations of
+#' modifications.
 #'
 #' @author Guillaume Deflandre <guillaume.deflandre@uclouvain.be>
 #'
 #' @importFrom utils combn
 #'
-#' @author Guillaume Deflandre <guillaume.deflandre@uclouvain.be>
-#'
 #' @noRd
 #'
 #' @examples
-#' .addVariableModifications("APGHKA", variableModifications = c(A = 4, K = 5, S = 8), maxMods = 2)
-#' .addVariableModifications("APGHKA", variableModifications = c(A = 4, K = 5, S = 8), maxMods = 3)
-#' .addVariableModifications("ATK", variableModifications = c(T = "Phospho", A = "UNIMOD:1"))
-#' .addVariableModifications("A[+10]KT[-5]", variableModifications = c(A = -5, T = "Phospho"))
+#' .addVariableModifications(
+#'     "APGHKA",
+#'     variableModifications = c(A = 4, K = 5, S = 8),
+#'     maxMods = 2
+#' )
+#' .addVariableModifications(
+#'     "APGHKA",
+#'     variableModifications = c(A = 4, K = 5, S = 8),
+#'     maxMods = 3
+#' )
+#' .addVariableModifications(
+#'     "ATK",
+#'     variableModifications = c(T = "Phospho", A = "UNIMOD:1")
+#' )
+#' .addVariableModifications(
+#'     "A[+10]KT[-5]",
+#'     variableModifications = c(A = -5, T = "Phospho")
+#' )
+#'
+#' ## Apply two modifications to the same residue consecutively
+#' "ATK" |>
+#'     addVariableModifications(c(T = "+57.024")) |>
+#'     addVariableModifications(c(T = "Phospho"))
 .addVariableModifications <- function(sequence,
                                       variableModifications = NULL,
                                       maxMods = Inf) {
+    if (!is.null(variableModifications)) {
+        mod_table <- table(names(variableModifications))
+
+        if (!all(mod_table == 1)) {
+            stop(
+                "Applying multiple modifications to the same amino acid is not ",
+                "supported.\n",
+                "Please use addVariableModifications() consecutively instead:\n\n",
+                "  'ATK' |>\n",
+                "    addVariableModifications(c(T = '+57.024')) |>\n",
+                "    addVariableModifications(c(T = 'Phospho'))"
+            )
+        }
+    }
+
     if (!length(variableModifications) || maxMods <= 0) {
         return(sequence)
     }

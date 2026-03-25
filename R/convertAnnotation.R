@@ -20,6 +20,9 @@ utils::globalVariables("modifications")
 #' @param massTolerance Numeric mass tolerance in Daltons for matching
 #'   modifications (default: 0.01). Used when converting from deltaMass.
 #'
+#' @param verbose `logical(1)`. If `FALSE`, warnings about unrecognised
+#'   modifications are silenced (default: `TRUE`).
+#'
 #' @return Character vector with the sequences in the target annotation format
 #'
 #' @author Guillaume Deflandre <guillaume.deflandre@uclouvain.be>
@@ -71,7 +74,8 @@ utils::globalVariables("modifications")
 #' @export
 convertAnnotation <- function(x,
                               convertToStyle = c("deltaMass", "unimodId", "name"),
-                              massTolerance = 0.01) {
+                              massTolerance = 0.01, 
+                              verbose = TRUE) {
 
     # Validate inputs
     if (!is.character(x)) {
@@ -93,7 +97,8 @@ convertAnnotation <- function(x,
            function(seq) .convertAnnotation(seq,
                                            convertToStyle = convertToStyle,
                                            massTolerance = massTolerance,
-                                           unimodData = unimodData),
+                                           unimodData = unimodData, 
+                                           verbose = verbose),
 
            character(1),
            USE.NAMES = FALSE)
@@ -106,7 +111,8 @@ convertAnnotation <- function(x,
 .convertAnnotation <- function(x,
                               convertToStyle = c("deltaMass", "unimodId", "name"),
                               massTolerance = 0.01, 
-                              unimodData = NULL) {
+                              unimodData = NULL,
+                              verbose = TRUE) {
 
     if (!is.character(x) || length(x) != 1L) {
         stop("x must be a single character string")
@@ -160,7 +166,8 @@ convertAnnotation <- function(x,
             inputType = inputType,
             outputType = convertToStyle,
             unimodData = unimodData,
-            massTolerance = massTolerance
+            massTolerance = massTolerance,
+            verbose = verbose
         )
 
         # Replace in the result string if conversion successful
@@ -250,7 +257,8 @@ convertAnnotation <- function(x,
 #'
 #' @noRd
 .convertModificationFormat <- function(modContent, inputType, outputType,
-                                       unimodData, massTolerance) {
+                                       unimodData, massTolerance, 
+                                       verbose = TRUE) {
 
     # Strategy: always convert to intermediate representation first
     # inputType → intermediate (UnimodId + Mass + Name) → outputType
@@ -277,9 +285,11 @@ convertAnnotation <- function(x,
 
     # Check if lookup was successful
     if (is.null(intermediate)) {
+        if (verbose) {
         warning(paste0(
             "Could not find Unimod entry for modification ",
             modContent, ", see `?modifications`"))    
+        }
         return(NULL)
     }
 

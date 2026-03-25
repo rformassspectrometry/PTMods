@@ -77,6 +77,13 @@ test_that("addFixedModifications preserves - prefix for negative numeric-as-char
     expect_equal(result, "A[-42]T[+79.966331]K")
 })
 
+test_that("addFixedModifications applies two mods to same residue consecutively", {
+    result <- "ATK" |>
+        addFixedModifications(c(T = "+57.024")) |>
+        addFixedModifications(c(T = "Phospho"))
+    expect_equal(result, "AT[+57.024][Phospho]K")
+})
+
 # Test internal .addFixedModifications
 
 test_that(".addFixedModifications applies N-terminal modification", {
