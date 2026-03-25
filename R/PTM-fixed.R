@@ -15,7 +15,15 @@
 #' `character` is given, values must be in UniMod name or UniMod ID format
 #' (e.g. `"Phospho"`, `"UNIMOD:21"`). The annotation style of the values is
 #' preserved in the output.
-#' Specifies which fixed modifications are applied to which amino acids.
+#' Specifies which fixed modifications are applied to which amino acids. By
+#' default, carbamidomethylation is applied (+57.021464 on cysteines).
+#' Supplying multiple modifications for the same amino acid is not supported;
+#' call the function consecutively instead:
+#' \preformatted{
+#'   "ATK" |>
+#'     addFixedModifications(c(T = "+57.024")) |>
+#'     addFixedModifications(c(T = "Phospho"))
+#' }
 #'
 #' @return A named list of character strings with all fixed modifications
 #' applied to the corresponding amino acids, one element per input sequence.
@@ -25,14 +33,20 @@
 #' @export
 #'
 #' @examples
+#' addFixedModifications("ATCK")
 #' addFixedModifications("ATCK", fixedModifications = c(Nterm = 304, C = 57.02146))
 #' addFixedModifications("ATSK", fixedModifications = c(A = -42, S = 79.966331))
 #' addFixedModifications("ATK", fixedModifications = c(T = "Phospho", A = 42))
 #' addFixedModifications("A[+42]TK", fixedModifications = c(T = "Phospho"))
 #' addFixedModifications("AT[+79.966]AK", fixedModifications = c(A = 42))
 #' addFixedModifications("ATA[+79.966]K", fixedModifications = c(A = 42))
+#'
+#' ## Apply two modifications to the same residue consecutively
+#' "ATK" |>
+#'     addFixedModifications(c(T = "+57.024")) |>
+#'     addFixedModifications(c(T = "Phospho"))
 addFixedModifications <- function(sequences,
-                                  fixedModifications = NULL) {
+                                  fixedModifications = c(C = 57.021464)) {
     unname(sapply(sequences, .addFixedModifications,
         fixedModifications = fixedModifications
     ))
@@ -48,12 +62,17 @@ addFixedModifications <- function(sequences,
 #' specified in `convertAnnotation`.
 #' Specifies which fixed modifications are applied to which amino acids.
 #' Use Nterm or Cterm as names for modifications that should be added to the
-#' amino/carboxyl-termini. Default is set to carbamidomethylation (C = 57.02146).
+#' amino/carboxyl-termini. Default is set to carbamidomethylation
+#' (C = 57.02146). Supplying multiple modifications for the same amino acid
+#' is not supported; call `addFixedModifications()` consecutively instead:
+#' \preformatted{
+#'   "ATK" |>
+#'     addFixedModifications(c(T = "+57.024")) |>
+#'     addFixedModifications(c(T = "Phospho"))
+#' }
 #'
 #' @return A character string with all fixed modifications applied to the
 #' corresponding amino acids.
-#'
-#' @author Guillaume Deflandre <guillaume.deflandre@uclouvain.be>
 #'
 #' @author Guillaume Deflandre <guillaume.deflandre@uclouvain.be>
 #'
@@ -65,8 +84,28 @@ addFixedModifications <- function(sequences,
 #' .addFixedModifications("ATK", fixedModifications = c(T = "Phospho", A = "UNIMOD:1"))
 #' .addFixedModifications("AT[+79.966]AK", fixedModifications = c(A = 42))
 #' .addFixedModifications("ATA[+79.966]K", fixedModifications = c(A = 42))
+#'
+#' ## Apply two modifications to the same residue consecutively
+#' "ATK" |>
+#'     addFixedModifications(c(T = "+57.024")) |>
+#'     addFixedModifications(c(T = "Phospho"))
 .addFixedModifications <- function(sequence,
                                    fixedModifications = c(C = 57.02146)) {
+    if (!is.null(fixedModifications)) {
+        mod_table <- table(names(fixedModifications))
+
+        if (!all(mod_table == 1)) {
+            stop(
+                "Applying multiple modifications to the same amino acid is not ",
+                "supported.\n",
+                "Please use addFixedModifications() consecutively instead:\n\n",
+                "  'ATK' |>\n",
+                "    addFixedModifications(c(T = '+57.024')) |>\n",
+                "    addFixedModifications(c(T = 'Phospho'))"
+            )
+        }
+    }
+
     terms <- .extractTerminalMods(sequence)
     sequence <- terms$sequence
 

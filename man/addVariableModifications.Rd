@@ -18,7 +18,14 @@ modifications or not.}
 `character` is given, values must be in UniMod name or UniMod ID format
 (e.g. `"Phospho"`, `"UNIMOD:21"`). The annotation style of the values is
 preserved in the output.
-Specifies which variable modifications are used on which amino acids.}
+Specifies which variable modifications are used on which amino acids.
+Supplying multiple modifications for the same amino acid is not supported;
+call the function consecutively instead:
+\preformatted{
+  seq |>
+    addVariableModifications(c(T = "+57.024")) |>
+    addVariableModifications(c(T = "Phospho"))
+}}
 
 \item{maxMods}{Numeric. Indicates how many modifications can be applied
 at once.}
@@ -38,10 +45,29 @@ produce deltaMass notation (e.g. `[+79.966331]`), while character values
 are used verbatim (e.g. `[Phospho]` or `[UNIMOD:21]`).
 }
 \examples{
-addVariableModifications("APGHKA", variableModifications = c(A = 4, K = 5, S = 8), maxMods = 2)
-addVariableModifications("APGHKA", variableModifications = c(A = 4, K = 5, S = 8), maxMods = 3)
-addVariableModifications(c("ATK", "PAK"), variableModifications = c(T = "Phospho", A = "UNIMOD:1"))
-addVariableModifications("A[+10]KT[-5]", variableModifications = c(A = -20, T = "Phospho"))
+addVariableModifications(
+    "APGHKA",
+    variableModifications = c(A = 4, K = 5, S = 8),
+    maxMods = 2
+)
+addVariableModifications(
+    "APGHKA",
+    variableModifications = c(A = 4, K = 5, S = 8),
+    maxMods = 3
+)
+addVariableModifications(
+    c("ATK", "PAK"),
+    variableModifications = c(T = "Phospho", A = "UNIMOD:1")
+)
+addVariableModifications(
+    "A[+10]KT[-5]",
+    variableModifications = c(A = -20, T = "Phospho")
+)
+
+## Apply two modifications to the same residue consecutively
+"ATK" |>
+    addVariableModifications(c(T = "+57.024")) |>
+    addVariableModifications(c(T = "Phospho"))
 }
 \author{
 Guillaume Deflandre <guillaume.deflandre@uclouvain.be>

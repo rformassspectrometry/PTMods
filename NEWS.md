@@ -1,5 +1,11 @@
 # PTMods 0.99
 
+## PTMods 0.99.4
+
+- Added `getModificationsCounts()`
+- `convertAnnotation()` now also has a `verbose` parameter to suppress warnings
+  if need be.
+
 ## PTMods 0.99.3
 
 - Added `addModifications()`, `addFixedModifications()`,

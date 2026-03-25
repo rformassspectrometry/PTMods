@@ -8,7 +8,8 @@
 convertAnnotation(
   x,
   convertToStyle = c("deltaMass", "unimodId", "name"),
-  massTolerance = 0.01
+  massTolerance = 0.01,
+  verbose = TRUE
 )
 }
 \arguments{
@@ -19,6 +20,9 @@ convertAnnotation(
 
 \item{massTolerance}{Numeric mass tolerance in Daltons for matching
 modifications (default: 0.01). Used when converting from deltaMass.}
+
+\item{verbose}{`logical(1)`. If `FALSE`, warnings about unrecognised
+modifications are silenced (default: `TRUE`).}
 }
 \value{
 Character vector with the sequences in the target annotation format
