@@ -126,6 +126,8 @@ addVariableModifications <- function(sequences,
 .addVariableModifications <- function(sequence,
                                       variableModifications = NULL,
                                       maxMods = Inf) {
+    if (is.na(sequence)) return(NA_character_)
+
     if (!is.null(variableModifications)) {
         mod_table <- table(names(variableModifications))
 
@@ -184,7 +186,7 @@ addVariableModifications <- function(sequences,
         )
     )
 
-    inner_sequences <- unique(unname(sapply(combos, function(x) {
+    inner_sequences <- unique(vapply(combos, function(x) {
         paste(
             ifelse(!is.na(x),
                 paste0(names(x), "[", x, "]"),
@@ -192,7 +194,7 @@ addVariableModifications <- function(sequences,
             ),
             collapse = ""
         )
-    })))
+    }, FUN.VALUE = character(1L), USE.NAMES = FALSE))
 
     vapply(inner_sequences, .reattachTerminalMods,
         nterm = terms$nterm, cterm = terms$cterm,

@@ -128,3 +128,9 @@ test_that("addVariableModifications returns original with NULL mods", {
     )
     expect_equal(result, "ATSK")
 })
+
+test_that("addVariableModifications preserves NAs in input", {
+    result <- addVariableModifications(c(NA, "ATK"))
+    expect_true(is.na(result[[1]]))
+    expect_equal(result[[2]], "ATK")
+})

@@ -47,9 +47,11 @@
 #'     addFixedModifications(c(T = "Phospho"))
 addFixedModifications <- function(sequences,
                                   fixedModifications = c(C = 57.021464)) {
-    unname(sapply(sequences, .addFixedModifications,
-        fixedModifications = fixedModifications
-    ))
+    vapply(sequences, .addFixedModifications,
+        FUN.VALUE = character(1L),
+        fixedModifications = fixedModifications,
+        USE.NAMES = FALSE
+    )
 }
 
 #' @title Applies fixed modifications to a peptide sequence
@@ -91,6 +93,10 @@ addFixedModifications <- function(sequences,
 #'     addFixedModifications(c(T = "Phospho"))
 .addFixedModifications <- function(sequence,
                                    fixedModifications = c(C = 57.02146)) {
+    if (is.na(sequence)) {
+        return(NA_character_)
+    }
+
     if (!is.null(fixedModifications)) {
         mod_table <- table(names(fixedModifications))
 

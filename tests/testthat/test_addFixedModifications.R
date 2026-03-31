@@ -146,3 +146,9 @@ test_that(".addTerminalModifications skips if no terminal mods", {
     result <- PTMods:::.addTerminalModifications("ATK", c(A = 42))
     expect_equal(result, "ATK")
 })
+
+test_that("addFixedModifications preserves NAs in input", {
+    result <- addFixedModifications(c(NA, "ATK"))
+    expect_true(is.na(result[[1]]))
+    expect_equal(result[[2]], "ATK")
+})
