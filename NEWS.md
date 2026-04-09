@@ -1,5 +1,9 @@
 # PTMods 0.99
 
+## PTMods 0.99.6 
+
+- Adjusted documentation in `convertAnnotation()`.
+
 ## PTMods 0.99.5
 
 - Import `stats::setNames`.

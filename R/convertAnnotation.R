@@ -32,12 +32,14 @@ utils::globalVariables("modifications")
 #' @details
 #' The function handles three main conversion scenarios:
 #'
-#' - Name to deltaMass: "M[Oxidation]PEPTIDE" -> "M[+15.994915]PEPTIDE"
-#' - Name to unimodId: "M[Oxidation]PEPTIDE" -> "M[UNIMOD:35]PEPTIDE"
-#' - deltaMass to name: "M[+15.995]PEPTIDE" -> "M[Oxidation]PEPTIDE"
-#' - deltaMass to unimodId: "M[+15.995]PEPTIDE" -> "M[UNIMOD:35]PEPTIDE"
-#' - unimodId to name: "M[UNIMOD:35]PEPTIDE" -> "M[Oxidation]PEPTIDE"
-#' - unimodId to deltaMass: "M[UNIMOD:35]PEPTIDE" -> "M[+15.994915]PEPTIDE"
+#' \itemize{
+#'   \item Name to deltaMass: \code{"M[Oxidation]PEPTIDE"} -> \code{"M[+15.994915]PEPTIDE"}
+#'   \item Name to unimodId: \code{"M[Oxidation]PEPTIDE"} -> \code{"M[UNIMOD:35]PEPTIDE"}
+#'   \item deltaMass to name: \code{"M[+15.995]PEPTIDE"} -> \code{"M[Oxidation]PEPTIDE"}
+#'   \item deltaMass to unimodId: \code{"M[+15.995]PEPTIDE"} -> \code{"M[UNIMOD:35]PEPTIDE"}
+#'   \item unimodId to name: \code{"M[UNIMOD:35]PEPTIDE"} -> \code{"M[Oxidation]PEPTIDE"}
+#'   \item unimodId to deltaMass: \code{"M[UNIMOD:35]PEPTIDE"} -> \code{"M[+15.994915]PEPTIDE"}
+#' }
 #'
 #' @examples
 #' # Convert sequence from name to delta mass
