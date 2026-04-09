@@ -78,6 +78,8 @@ addFixedModifications <- function(sequences,
 #'
 #' @author Guillaume Deflandre <guillaume.deflandre@uclouvain.be>
 #'
+#' @importFrom stats setNames
+#'
 #' @noRd
 #'
 #' @examples

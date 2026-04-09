@@ -1,5 +1,11 @@
 # PTMods 0.99
 
+## PTMods 0.99.5
+
+- Import `stats::setNames`.
+- Specify package name when loading data (fixes an
+  [https://github.com/lgatto/MSnbase/issues/613](issue in MSnbase)).
+
 ## PTMods 0.99.4
 
 - Added `getModificationsCounts()`
@@ -19,8 +25,8 @@ dataset before `.convertAnnotation()`.
 
 ## PTMods 0.99.1
 
-- Bump for re-build in Bioconductor submission (due to missing maintainer
-e-mail address)
+- Bump for re-build in Bioconductor submission (due to missing
+  maintainer e-mail address)
 
 ## PTMods 0.99.0
 

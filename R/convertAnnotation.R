@@ -74,7 +74,7 @@ utils::globalVariables("modifications")
 #' @export
 convertAnnotation <- function(x,
                               convertToStyle = c("deltaMass", "unimodId", "name"),
-                              massTolerance = 0.01, 
+                              massTolerance = 0.01,
                               verbose = TRUE) {
 
     # Validate inputs
@@ -85,7 +85,7 @@ convertAnnotation <- function(x,
     convertToStyle <- match.arg(convertToStyle)
 
     # Load modifications data once into the local environment
-    data(modifications, envir = environment())
+    data(modifications, envir = environment(), package = "PTMods")
 
     # Prepare unimodData once for all sequences
     unimodData <- modifications[!modifications$NeutralLoss,
@@ -97,7 +97,7 @@ convertAnnotation <- function(x,
            function(seq) .convertAnnotation(seq,
                                            convertToStyle = convertToStyle,
                                            massTolerance = massTolerance,
-                                           unimodData = unimodData, 
+                                           unimodData = unimodData,
                                            verbose = verbose),
 
            character(1),
@@ -110,7 +110,7 @@ convertAnnotation <- function(x,
 #' @noRd
 .convertAnnotation <- function(x,
                               convertToStyle = c("deltaMass", "unimodId", "name"),
-                              massTolerance = 0.01, 
+                              massTolerance = 0.01,
                               unimodData = NULL,
                               verbose = TRUE) {
 
@@ -122,10 +122,10 @@ convertAnnotation <- function(x,
 
     if (is.null(unimodData)) {
         # Load modifications data once into the local environment
-        data(modifications, envir = environment())
+        data(modifications, envir = environment(), package = "PTMods")
 
         # Prepare unimodData once for all sequences
-        unimodData <- modifications[!modifications$NeutralLoss, 
+        unimodData <- modifications[!modifications$NeutralLoss,
             c("UnimodId", "Name", "MonoMass")]
 
         unimodData <- unimodData[!duplicated(unimodData$Name), ]
@@ -257,7 +257,7 @@ convertAnnotation <- function(x,
 #'
 #' @noRd
 .convertModificationFormat <- function(modContent, inputType, outputType,
-                                       unimodData, massTolerance, 
+                                       unimodData, massTolerance,
                                        verbose = TRUE) {
 
     # Strategy: always convert to intermediate representation first
@@ -288,7 +288,7 @@ convertAnnotation <- function(x,
         if (verbose) {
         warning(paste0(
             "Could not find Unimod entry for modification ",
-            modContent, ", see `?modifications`"))    
+            modContent, ", see `?modifications`"))
         }
         return(NULL)
     }
