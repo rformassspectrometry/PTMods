@@ -9,6 +9,7 @@ addModifications(
   fixedModifications = NULL,
   variableModifications = NULL,
   convertToStyle = NULL,
+  pos = NULL,
   ...
 )
 }
@@ -39,6 +40,11 @@ modifications in the returned sequences. One of:
   \item{`"name"`}{UniMod name notation, e.g. `[Phospho]`.}
 }
 Conversion is performed by [convertAnnotation()].}
+
+\item{pos}{`integer` or `NULL`. When supplied, fixed modifications are
+applied at these 1-based canonical positions rather than by amino-acid
+name. Must have the same length as `sequences`. Forwarded to
+[addFixedModifications()]. Ignored when `fixedModifications` is `NULL`.}
 
 \item{...}{Additional arguments passed to the underlying modification
 functions. Currently supported:
@@ -96,6 +102,13 @@ addModifications(
     "ATSK",
     fixedModifications = c(Nterm = 304),
     variableModifications = c(S = 79.966331)
+)
+
+## Positional fixed modification
+addModifications(
+    c("ATK", "PQTR"),
+    fixedModifications = c("Phospho", 79.966),
+    pos = c(2L, 3L)
 )
 }
 \seealso{

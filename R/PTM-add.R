@@ -19,6 +19,11 @@
 #'   or UniMod ID format (e.g. `"Phospho"`, `"UNIMOD:21"`). See
 #'   [addFixedModifications()] for full details. Set to `NULL` to skip.
 #'
+#' @param pos `integer` or `NULL`. When supplied, fixed modifications are
+#'   applied at these 1-based canonical positions rather than by amino-acid
+#'   name. Must have the same length as `sequences`. Forwarded to
+#'   [addFixedModifications()]. Ignored when `fixedModifications` is `NULL`.
+#'
 #' @param variableModifications Named `numeric` or `character`, or `NULL`.
 #'   Variable modifications to enumerate over the specified amino acids.
 #'   Names correspond to single-letter amino acid codes. If `character`,
@@ -96,10 +101,18 @@
 #'     fixedModifications = c(Nterm = 304),
 #'     variableModifications = c(S = 79.966331)
 #' )
+#'
+#' ## Positional fixed modification
+#' addModifications(
+#'     c("ATK", "PQTR"),
+#'     fixedModifications = c("Phospho", 79.966),
+#'     pos = c(2L, 3L)
+#' )
 addModifications <- function(sequences,
                              fixedModifications = NULL,
                              variableModifications = NULL,
                              convertToStyle = NULL,
+                             pos = NULL,
                              ...) {
     dots <- list(...)
 
@@ -107,7 +120,8 @@ addModifications <- function(sequences,
     if (!is.null(fixedModifications)) {
         sequences <- addFixedModifications(
             sequences,
-            fixedModifications = fixedModifications
+            fixedModifications = fixedModifications,
+            pos = pos
         )
     }
 

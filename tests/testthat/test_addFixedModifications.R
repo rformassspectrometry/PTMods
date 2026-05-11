@@ -152,3 +152,146 @@ test_that("addFixedModifications preserves NAs in input", {
     expect_true(is.na(result[[1]]))
     expect_equal(result[[2]], "ATK")
 })
+
+# Tests for positional mode (pos argument)
+
+test_that("addFixedModifications applies positional character mod", {
+    result <- addFixedModifications(
+        "ATK",
+        fixedModifications = c(T = "Phospho"),
+        pos = 2L
+    )
+    expect_equal(result, "AT[Phospho]K")
+})
+
+test_that("addFixedModifications positional: names in fixedMods are ignored", {
+    result_named <- addFixedModifications(
+        "ATK",
+        fixedModifications = c(X = "Phospho"),
+        pos = 2L
+    )
+    result_unnamed <- addFixedModifications(
+        "ATK",
+        fixedModifications = "Phospho",
+        pos = 2L
+    )
+    expect_equal(result_named, "AT[Phospho]K")
+    expect_equal(result_unnamed, "AT[Phospho]K")
+})
+
+test_that("addFixedModifications applies positional numeric mod", {
+    result <- addFixedModifications(
+        "ATK",
+        fixedModifications = 79.966,
+        pos = 2L
+    )
+    expect_equal(result, "AT[+79.966]K")
+})
+
+test_that("addFixedModifications positional: vectorised sequences", {
+    result <- addFixedModifications(
+        c("ATK", "PQTR"),
+        fixedModifications = c("Phospho", 79.966),
+        pos = c(2L, 3L)
+    )
+    expect_equal(result, c("AT[Phospho]K", "PQT[+79.966]R"))
+})
+
+test_that("addFixedModifications positional stacks on existing mod", {
+    result <- addFixedModifications(
+        "AT[+79.966]K",
+        fixedModifications = "Acetyl",
+        pos = 2L
+    )
+    expect_equal(result, "AT[+79.966][Acetyl]K")
+})
+
+test_that("addFixedModifications positional preserves terminal mods", {
+    result <- addFixedModifications(
+        "[+304]-ATK",
+        fixedModifications = "Phospho",
+        pos = 2L
+    )
+    expect_equal(result, "[+304]-AT[Phospho]K")
+})
+
+test_that("addFixedModifications positional: pos out of range errors", {
+    expect_error(
+        addFixedModifications("ATK", fixedModifications = "Phospho", pos = 5L),
+        "'pos'.*out of range"
+    )
+})
+
+test_that("addFixedModifications positional: length mismatch errors", {
+    expect_error(
+        addFixedModifications(
+            c("ATK", "PQTR"),
+            fixedModifications = c("Phospho", "Acetyl", "Oxidation"),
+            pos = c(2L, 3L)
+        ),
+        "same length"
+    )
+    expect_error(
+        addFixedModifications(
+            c("ATK", "PQTR"),
+            fixedModifications = c("Phospho", "Acetyl"),
+            pos = c(2L, 3L, 1L)
+        ),
+        "same length"
+    )
+})
+
+test_that("addFixedModifications positional: NA sequence returns NA", {
+    result <- addFixedModifications(
+        c(NA, "ATK"),
+        fixedModifications = c("Phospho", "Acetyl"),
+        pos = c(1L, 2L)
+    )
+    expect_true(is.na(result[[1]]))
+    expect_equal(result[[2]], "AT[Acetyl]K")
+})
+
+test_that("addFixedModifications positional: first position", {
+    result <- addFixedModifications(
+        "ATK",
+        fixedModifications = "Acetyl",
+        pos = 1L
+    )
+    expect_equal(result, "A[Acetyl]TK")
+})
+
+test_that("addFixedModifications positional: last position", {
+    result <- addFixedModifications(
+        "ATK",
+        fixedModifications = "GlyGly",
+        pos = 3L
+    )
+    expect_equal(result, "ATK[GlyGly]")
+})
+
+test_that("addFixedModifications positional: NA pos returns sequence unchanged", {
+    result <- addFixedModifications(
+        c("ATK", "PQTR"),
+        fixedModifications = c("Phospho", "Acetyl"),
+        pos = c(2L, NA)
+    )
+    expect_equal(result, c("AT[Phospho]K", "PQTR"))
+})
+
+test_that("addFixedModifications positional: NA mod returns sequence unchanged", {
+    result <- addFixedModifications(
+        c("ATK", "PQTR"),
+        fixedModifications = c("Phospho", NA),
+        pos = c(2L, 3L)
+    )
+    expect_equal(result, c("AT[Phospho]K", "PQTR"))
+})
+
+test_that("addFixedModifications positional: both NA returns sequence unchanged", {
+    result <- addFixedModifications(
+        c("ATK", "PQTR"),
+        fixedModifications = c("Phospho", NA),
+        pos = c(2L, NA)
+    )
+    expect_equal(result, c("AT[Phospho]K", "PQTR"))
+})

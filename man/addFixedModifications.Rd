@@ -4,7 +4,11 @@
 \alias{addFixedModifications}
 \title{Add fixed modifications}
 \usage{
-addFixedModifications(sequences, fixedModifications = c(C = 57.021464))
+addFixedModifications(
+  sequences,
+  fixedModifications = c(C = 57.021464),
+  pos = NULL
+)
 }
 \arguments{
 \item{sequences}{Character vector. Peptide sequences that may have
@@ -22,11 +26,24 @@ call the function consecutively instead:
   "ATK" |>
     addFixedModifications(c(T = "+57.024")) |>
     addFixedModifications(c(T = "Phospho"))
-}}
+}
+When `pos` is provided, `fixedModifications` must have the same length
+as `sequences`, and names are ignored.}
+
+\item{pos}{`integer` or `NULL`. When supplied, gives the 1-based position
+in the canonical (unmodified) amino acid sequence at which each
+modification is inserted. Must have the same length as `sequences`.
+Only one positional modification per sequence is allowed; call the
+function consecutively to add more. When `pos` is `NULL` (default),
+modifications are applied to all occurrences of the named amino acids
+in `fixedModifications`. The two modes are mutually exclusive: when
+`pos` is provided, amino-acid-name matching is not performed.
+An `NA` at position `i` of `pos` or `fixedModifications` causes the
+corresponding sequence to be returned unchanged.}
 }
 \value{
-A named list of character strings with all fixed modifications
-applied to the corresponding amino acids, one element per input sequence.
+A character vector with all fixed modifications applied, one
+element per input sequence.
 }
 \description{
 Applies fixed modifications to peptide sequences.
@@ -39,12 +56,33 @@ verbatim (e.g. `[Phospho]` or `[UNIMOD:21]`).
 }
 \examples{
 addFixedModifications("ATCK")
-addFixedModifications("ATCK", fixedModifications = c(Nterm = 304, C = 57.02146))
-addFixedModifications("ATSK", fixedModifications = c(A = -42, S = 79.966331))
-addFixedModifications("ATK", fixedModifications = c(T = "Phospho", A = 42))
+addFixedModifications(
+    "ATCK",
+    fixedModifications = c(Nterm = 304, C = 57.02146)
+)
+addFixedModifications(
+    "ATSK",
+    fixedModifications = c(A = -42, S = 79.966331)
+)
+addFixedModifications(
+    "ATK",
+    fixedModifications = c(T = "Phospho", A = 42)
+)
 addFixedModifications("A[+42]TK", fixedModifications = c(T = "Phospho"))
 addFixedModifications("AT[+79.966]AK", fixedModifications = c(A = 42))
 addFixedModifications("ATA[+79.966]K", fixedModifications = c(A = 42))
+
+## Positional modification
+addFixedModifications("ATK",
+    fixedModifications = c(T = "Phospho"), pos = 2L
+)
+
+## One positional modification per sequence
+addFixedModifications(
+    c("ATK", "PQTR"),
+    fixedModifications = c("Phospho", 79.966),
+    pos = c(2L, 3L)
+)
 
 ## Apply two modifications to the same residue consecutively
 "ATK" |>

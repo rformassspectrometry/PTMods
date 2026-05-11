@@ -2,7 +2,8 @@
 
 ## PTMods 1.1.1
 
-- Nothing yet.
+- Added `pos` parameter in `addFixedModifications()` to allow positional
+  modifications as they can be defined in some search engine outputs.
 
 ## PTMods 1.1.0
 
