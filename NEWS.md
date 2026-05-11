@@ -1,3 +1,13 @@
+# PTMods 1.1
+
+## PTMods 1.1.1
+
+- Nothing yet.
+
+## PTMods 1.1.0
+
+- New Bioconductor devel.
+
 # PTMods 0.99
 
 ## PTMods 0.99.6 
