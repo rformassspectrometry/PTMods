@@ -27,17 +27,18 @@
 #' When `pos` is provided, `fixedModifications` must have the same length
 #' as `sequences`, and names are ignored.
 #'
-#' @param pos `integer` or `NULL`. When supplied, gives the 1-based position
-#' in the canonical (unmodified) amino acid sequence at which each
-#' modification is inserted. Must have the same length as `sequences`.
-#' Only one positional modification per sequence is allowed; call the
+#' @param pos `integer(1L)` or `NULL`. When supplied, the modification is
+#' inserted at the specified positional residue. 
+#' Names in `fixedModifications` are ignored. 
+#' Must have the same length as `sequences`.
+#' Only one positional modification per sequence is allowed, call the
 #' function consecutively to add more. When `pos` is `NULL` (default),
 #' modifications are applied to all occurrences of the named amino acids
-#' in `fixedModifications`. The two modes are mutually exclusive: when
-#' `pos` is provided, amino-acid-name matching is not performed.
+#' in `fixedModifications`. 
 #' An `NA` at position `i` of `pos` or `fixedModifications` causes the
 #' corresponding sequence to be returned unchanged.
 #'
+
 #' @return A character vector with all fixed modifications applied, one
 #' element per input sequence.
 #'
