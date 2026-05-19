@@ -180,6 +180,15 @@ addFixedModifications("MPEPT[Phospho]IDE",
     fixedModifications = c(Nterm = 304)
 )
 ```
+And so are positional modifications, where one modification is applied on the
+residue at position `pos`:
+
+```{r}
+addFixedModifications("APEP[Phospho]TIDE",
+    fixedModifications = c("Fluoro"),
+    pos = 1
+)
+```
 
 Notice that for both functions, the input sequence is kept as is (keeping the
 already present PTM "Phospho") whilst the notation style provided is also

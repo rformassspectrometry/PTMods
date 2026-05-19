@@ -1,6 +1,6 @@
 Package: PTMods
 Type: Package
-Version: 0.99.6
+Version: 1.1.1
 Title: Managing Post-Translational Modifications in R
 Authors@R: c(person("Laurent", "Gatto", role = "aut",
                     email = "laurent.gatto@uclouvain.be",
@@ -22,5 +22,5 @@ VignetteBuilder: knitr
 biocViews: Proteomics, MassSpectrometry
 BugReports: https://github.com/RforMassSpectrometry/PTMods/issues
 URL: https://github.com/RforMassSpectrometry/PTMods
-RoxygenNote: 7.3.3
 Encoding: UTF-8
+Config/roxygen2/version: 8.0.0

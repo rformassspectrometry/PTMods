@@ -1,3 +1,14 @@
+# PTMods 1.1
+
+## PTMods 1.1.1
+
+- Added `pos` parameter in `addFixedModifications()` to allow positional
+  modifications as they can be defined in some search engine outputs.
+
+## PTMods 1.1.0
+
+- New Bioconductor devel.
+
 # PTMods 0.99
 
 ## PTMods 0.99.6 
