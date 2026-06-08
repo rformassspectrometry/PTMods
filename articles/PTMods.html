@@ -32,7 +32,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">PTMods</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.99.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.1.1</span>
       </span>
     </div>
 
@@ -50,7 +50,7 @@
       </ul>
 <ul class="nav navbar-nav navbar-right">
 <li>
-  <a href="https://github.com/RforMassSpectrometry/unimod/" class="external-link">
+  <a href="https://github.com/RforMassSpectrometry/PTMods/" class="external-link">
     <span class="fab fa-github fa-lg"></span>
 
   </a>
@@ -72,7 +72,7 @@
 post-translational modifications</h1>
             
       
-      <small class="dont-index">Source: <a href="https://github.com/RforMassSpectrometry/unimod/blob/HEAD/vignettes/PTMods.Rmd" class="external-link"><code>vignettes/PTMods.Rmd</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/RforMassSpectrometry/PTMods/blob/main/vignettes/PTMods.Rmd" class="external-link"><code>vignettes/PTMods.Rmd</code></a></small>
       <div class="hidden name"><code>PTMods.Rmd</code></div>
 
     </div>
@@ -90,7 +90,9 @@ document.addEventListener("DOMContentLoaded", function() {
     if (links[i].hostname != window.location.hostname)
       links[i].target = '_blank';
 });
-</script><p><strong>Package</strong>: <em><a href="https://bioconductor.org/packages/3.22/PTMods" class="external-link">PTMods</a></em><br><strong>Authors</strong>: Laurent Gatto and Sebastian Gidd<br><strong>Last modified:</strong> 2026-01-06 22:18:31.336936<br><strong>Compiled</strong>: Tue Jan 6 22:18:39 2026</p>
+</script><p><strong>Package</strong>: <em><a href="https://bioconductor.org/packages/3.24/PTMods" class="external-link">PTMods</a></em><br><strong>Authors</strong>: Laurent Gatto [aut] (ORCID: <a href="https://orcid.org/0000-0002-1520-2268" class="external-link uri">https://orcid.org/0000-0002-1520-2268</a>), Sebastian Gibb
+[aut] (ORCID: <a href="https://orcid.org/0000-0001-7406-4443" class="external-link uri">https://orcid.org/0000-0001-7406-4443</a>), Guillaume
+Deflandre [cre] (ORCID: <a href="https://orcid.org/0009-0008-1257-2416" class="external-link uri">https://orcid.org/0009-0008-1257-2416</a>)<br><strong>Last modified:</strong> 2026-06-08 14:41:12.14592<br><strong>Compiled</strong>: Mon Jun 8 14:44:24 2026</p>
 <div class="section level2">
 <h2 id="introduction">Introduction<a class="anchor" aria-label="anchor" href="#introduction"></a>
 </h2>
@@ -99,25 +101,27 @@ that happen after protein biosynthesis and that can have a major
 influence on protein function. PTMs are biologically very important and
 can be identified in a high-throughput way using mass spectrometry.</p>
 <p>The <code>PTMods</code> package focuses on handling such PTMs and
-works in conjuction with the <em><a href="https://bioconductor.org/packages/3.22/PSMatch" class="external-link">PSMatch</a></em>
-and <em><a href="https://bioconductor.org/packages/3.22/Spectra" class="external-link">Spectra</a></em>
+works in conjuction with the <em><a href="https://bioconductor.org/packages/3.24/PSMatch" class="external-link">PSMatch</a></em>
+and <em><a href="https://bioconductor.org/packages/3.24/Spectra" class="external-link">Spectra</a></em>
 packages. It distributes PTMs from the Unimod database and allows to
-convert PTM annotations between multiple annotation formats.</p>
+convert PTM annotations between multiple annotation formats. The package
+also allows the seemless addition of fixed and/or variable PTMs using
+different annotation formats.</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/RforMassSpectrometry/unimod" class="external-link">PTMods</a></span><span class="op">)</span></span></code></pre></div>
-<pre><code><span><span class="co">## This is PTMods version 0.3</span></span></code></pre>
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/RforMassSpectrometry/PTMods" class="external-link">PTMods</a></span><span class="op">)</span></span></code></pre></div>
 <div class="section level3">
 <h3 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
 </h3>
 <p>The package can be installed from Bioconductor with</p>
-<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="kw">if</span> <span class="op">(</span><span class="op">!</span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">require</a></span><span class="op">(</span><span class="st"><a href="https://bioconductor.github.io/BiocManager/" class="external-link">"BiocManager"</a></span>, quietly <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span></span>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw">if</span> <span class="op">(</span><span class="op">!</span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">require</a></span><span class="op">(</span><span class="st"><a href="https://bioconductor.github.io/BiocManager/" class="external-link">"BiocManager"</a></span>, quietly <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
 <span>    <span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"BiocManager"</span><span class="op">)</span></span>
+<span><span class="op">}</span></span>
 <span></span>
 <span><span class="fu">BiocManager</span><span class="fu">::</span><span class="fu"><a href="https://bioconductor.github.io/BiocManager/reference/install.html" class="external-link">install</a></span><span class="op">(</span><span class="st">"PTMods"</span><span class="op">)</span></span></code></pre></div>
 <p>Alternatively, altough this isn’t recommended in general, it can also
 be installed from Github.</p>
-<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu">BiocManager</span><span class="fu">::</span><span class="fu"><a href="https://bioconductor.github.io/BiocManager/reference/install.html" class="external-link">install</a></span><span class="op">(</span><span class="st">"RforMassSpectrometry/PTMods"</span><span class="op">)</span></span></code></pre></div>
 </div>
 </div>
@@ -140,15 +144,18 @@ modifications. Other important information includes any mass change,
 (which residues are susceptible to modification and any constraints on
 the position of the modification within the protein or peptide).</p>
 </blockquote>
-<p>Source: <a href="http://www.unimod.org/unimod_help.html" class="external-link uri">http://www.unimod.org/unimod_help.html</a></p>
+<p>Source: <a href="http://www.unimod.org/unimod_help.html" class="external-link uri">http://www.unimod.org/unimod_help.html</a> We try to keep
+the data up to date with the Unimod database. If you believe it isn’t,
+do not hesitate to contact us through an <a href="https://github.com/rformassspectrometry/PTMods/issues/new" class="external-link">issue
+on the GitHub page</a>.</p>
 <p>The package provides the following objects.</p>
 <ul>
-<li>The <code>modifications</code> dataframe describing
-<code>r   nrow(PTMods::modifications)</code> PTMs from the unimod
-database:</li>
+<li>The <code>modifications</code> dataframe describing 3704 PTMs from
+the unimod database:</li>
 </ul>
-<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">modifications</span><span class="op">)</span></span></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">modifications</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">modifications</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">##                              Id UnimodId   Name Description Composition AvgMass</span></span>
 <span><span class="co">## Acetyl:K               Acetyl:K        1 Acetyl Acetylation H(2) C(2) O 42.0367</span></span>
 <span><span class="co">## Acetyl:N-term     Acetyl:N-term        1 Acetyl Acetylation H(2) C(2) O 42.0367</span></span>
@@ -174,8 +181,9 @@ database:</li>
 <li>The <code>aminoacids</code> dataframe describing 24 amino acids from
 the unimod database:</li>
 </ul>
-<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">aminoacids</span><span class="op">)</span></span></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">aminoacids</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">aminoacids</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">##   OneLetter ThreeLetter      FullName  AvgMass  MonoMass  H C N O S Se</span></span>
 <span><span class="co">## -         -                             0.0000   0.00000  0 0 0 0 0  0</span></span>
 <span><span class="co">## A         A         Ala       Alanine  71.0779  71.03711  5 3 1 1 0  0</span></span>
@@ -187,8 +195,9 @@ the unimod database:</li>
 <li>The <code>elements</code> data.frame describing 40 chemical elements
 from the unimod database:</li>
 </ul>
-<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">elements</span><span class="op">)</span></span></code></pre></div>
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">elements</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">elements</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">##     Name  FullName   AvgMass  MonoMass</span></span>
 <span><span class="co">## H      H  Hydrogen  1.007940  1.007825</span></span>
 <span><span class="co">## 2H    2H Deuterium  2.014102  2.014102</span></span>
@@ -241,28 +250,92 @@ example <code>"M[UNIMOD:35]PEPTIDE"</code> for an oxidation.</li>
 </ul>
 <p>The <code>convertAnnotion()</code> function can be used to convert
 between these different syntaxes:</p>
-<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/convertAnnotation.html">convertAnnotation</a></span><span class="op">(</span><span class="st">"M[Oxidation]PEPTIDE"</span>, convertToStyle <span class="op">=</span> <span class="st">"deltaMass"</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## [1] "M[+15.994915]PEPTIDE"</span></span></code></pre>
-<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/convertAnnotation.html">convertAnnotation</a></span><span class="op">(</span><span class="st">"M[Oxidation]PEPTIDE"</span>, convertToStyle <span class="op">=</span> <span class="st">"unimodId"</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## [1] "M[UNIMOD:35]PEPTIDE"</span></span></code></pre>
-<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/convertAnnotation.html">convertAnnotation</a></span><span class="op">(</span><span class="st">"M[+15.995]PEPTIDE"</span>, convertToStyle <span class="op">=</span> <span class="st">"name"</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## [1] "M[Oxidation]PEPTIDE"</span></span></code></pre>
 </div>
 <div class="section level2">
+<h2 id="add-modifications-to-a-sequence">Add modifications to a sequence<a class="anchor" aria-label="anchor" href="#add-modifications-to-a-sequence"></a>
+</h2>
+<p>PTMs may be added (in any of the formats mentioned above) using the
+<code><a href="../reference/addFixedModifications.html">addFixedModifications()</a></code> and
+<code><a href="../reference/addVariableModifications.html">addVariableModifications()</a></code> functions.</p>
+<p>The latter will provide all combinations of possible sequences with
+the given modifications.</p>
+<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/addFixedModifications.html">addFixedModifications</a></span><span class="op">(</span><span class="st">"MPEPTIDE"</span>,</span>
+<span>    fixedModifications <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>M <span class="op">=</span> <span class="st">"Oxidation"</span><span class="op">)</span></span>
+<span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">## [1] "M[Oxidation]PEPTIDE"</span></span></code></pre>
+<div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/addVariableModifications.html">addVariableModifications</a></span><span class="op">(</span><span class="st">"MPEPTIDE"</span>,</span>
+<span>    variableModifications <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>M <span class="op">=</span> <span class="op">-</span><span class="fl">15.995</span>, T <span class="op">=</span> <span class="st">"Phospho"</span><span class="op">)</span></span>
+<span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">## [1] "MPEPTIDE"                   "M[-15.995]PEPTIDE"         </span></span>
+<span><span class="co">## [3] "MPEPT[Phospho]IDE"          "M[-15.995]PEPT[Phospho]IDE"</span></span></code></pre>
+<p>For fixed modifications, N- and C-terminal modifications are also
+accepted:</p>
+<div class="sourceCode" id="cb20"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/addFixedModifications.html">addFixedModifications</a></span><span class="op">(</span><span class="st">"MPEPT[Phospho]IDE"</span>,</span>
+<span>    fixedModifications <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>Nterm <span class="op">=</span> <span class="fl">304</span><span class="op">)</span></span>
+<span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">## [1] "[+304]-MPEPT[Phospho]IDE"</span></span></code></pre>
+<p>And so are positional modifications, where one modification is
+applied on the residue at position <code>pos</code>:</p>
+<div class="sourceCode" id="cb22"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/addFixedModifications.html">addFixedModifications</a></span><span class="op">(</span><span class="st">"APEP[Phospho]TIDE"</span>,</span>
+<span>    fixedModifications <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Fluoro"</span><span class="op">)</span>,</span>
+<span>    pos <span class="op">=</span> <span class="fl">1</span></span>
+<span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">## [1] "A[Fluoro]PEP[Phospho]TIDE"</span></span></code></pre>
+<p>Notice that for both functions, the input sequence is kept as is
+(keeping the already present PTM “Phospho”) whilst the notation style
+provided is also untouched. Combined with
+<code><a href="../reference/convertAnnotation.html">convertAnnotation()</a></code>, it is possible to convert the sequence
+into the preferred notation style if need be.</p>
+<p>For variable modifications, it is possible to limit the number of
+possible combinations using the <code>maxMods</code> parameter:</p>
+<div class="sourceCode" id="cb24"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/addVariableModifications.html">addVariableModifications</a></span><span class="op">(</span><span class="st">"MPEPTIDE"</span>,</span>
+<span>    variableModifications <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>M <span class="op">=</span> <span class="op">-</span><span class="fl">15.995</span>, T <span class="op">=</span> <span class="st">"Phospho"</span><span class="op">)</span>,</span>
+<span>    maxMods <span class="op">=</span> <span class="fl">1</span></span>
+<span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">## [1] "MPEPTIDE"          "M[-15.995]PEPTIDE" "MPEPT[Phospho]IDE"</span></span></code></pre>
+<p>Both fixed and variable modifications can be called at once using
+<code><a href="../reference/addModifications.html">addModifications()</a></code>. Use the <code>convertToStyle</code>
+parameter to convert the final sequence into your preferred notation
+style if need be:</p>
+<div class="sourceCode" id="cb26"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/addModifications.html">addModifications</a></span><span class="op">(</span><span class="st">"MPEPTIDE"</span>,</span>
+<span>    fixedModifications <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>M <span class="op">=</span> <span class="st">"Oxidation"</span><span class="op">)</span>,</span>
+<span>    variableModifications <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>T <span class="op">=</span> <span class="fl">79.966</span><span class="op">)</span>,</span>
+<span>    convertToStyle <span class="op">=</span> <span class="st">"unimodId"</span></span>
+<span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">## [1] "M[UNIMOD:35]PEPTIDE"            "M[UNIMOD:35]PEPT[UNIMOD:21]IDE"</span></span></code></pre>
+<p>To remove any and all modifications on a sequence, use
+<code><a href="../reference/getCanonicalSequence.html">getCanonicalSequence()</a></code>:</p>
+<div class="sourceCode" id="cb28"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/getCanonicalSequence.html">getCanonicalSequence</a></span><span class="op">(</span><span class="st">"[+304]-M[Oxidation]PEPT[UNIMOD:21]IDE"</span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">## [1] "MPEPTIDE"</span></span></code></pre>
+</div>
+<div class="section level2">
 <h2 id="session-information">Session information<a class="anchor" aria-label="anchor" href="#session-information"></a>
 </h2>
-<div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb30"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/sessionInfo.html" class="external-link">sessionInfo</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
-<pre><code><span><span class="co">## R version 4.5.0 (2025-04-11)</span></span>
+<pre><code><span><span class="co">## R version 4.6.0 (2026-04-24)</span></span>
 <span><span class="co">## Platform: x86_64-pc-linux-gnu</span></span>
-<span><span class="co">## Running under: Ubuntu 24.04.3 LTS</span></span>
+<span><span class="co">## Running under: Ubuntu 24.04.4 LTS</span></span>
 <span><span class="co">## </span></span>
 <span><span class="co">## Matrix products: default</span></span>
-<span><span class="co">## BLAS:   /opt/R-4.5/lib/R/lib/libRblas.so </span></span>
-<span><span class="co">## LAPACK: /opt/R-4.5/lib/R/lib/libRlapack.so;  LAPACK version 3.12.1</span></span>
+<span><span class="co">## BLAS:   /usr/lib/x86_64-linux-gnu/openblas-pthread/libblas.so.3 </span></span>
+<span><span class="co">## LAPACK: /usr/lib/x86_64-linux-gnu/openblas-pthread/libopenblasp-r0.3.26.so;  LAPACK version 3.12.0</span></span>
 <span><span class="co">## </span></span>
 <span><span class="co">## locale:</span></span>
 <span><span class="co">##  [1] LC_CTYPE=en_US.UTF-8       LC_NUMERIC=C              </span></span>
@@ -272,26 +345,26 @@ between these different syntaxes:</p>
 <span><span class="co">##  [9] LC_ADDRESS=C               LC_TELEPHONE=C            </span></span>
 <span><span class="co">## [11] LC_MEASUREMENT=en_US.UTF-8 LC_IDENTIFICATION=C       </span></span>
 <span><span class="co">## </span></span>
-<span><span class="co">## time zone: Europe/Brussels</span></span>
+<span><span class="co">## time zone: UTC</span></span>
 <span><span class="co">## tzcode source: system (glibc)</span></span>
 <span><span class="co">## </span></span>
 <span><span class="co">## attached base packages:</span></span>
 <span><span class="co">## [1] stats     graphics  grDevices utils     datasets  methods   base     </span></span>
 <span><span class="co">## </span></span>
 <span><span class="co">## other attached packages:</span></span>
-<span><span class="co">## [1] PTMods_0.3       BiocStyle_2.38.0</span></span>
+<span><span class="co">## [1] PTMods_1.1.1     BiocStyle_2.41.0</span></span>
 <span><span class="co">## </span></span>
 <span><span class="co">## loaded via a namespace (and not attached):</span></span>
-<span><span class="co">##  [1] digest_0.6.39       desc_1.4.3          R6_2.6.1           </span></span>
-<span><span class="co">##  [4] bookdown_0.34.2     fastmap_1.2.0       xfun_0.55          </span></span>
-<span><span class="co">##  [7] cachem_1.1.0        knitr_1.50          htmltools_0.5.9    </span></span>
-<span><span class="co">## [10] rmarkdown_2.30      lifecycle_1.0.4     cli_3.6.5          </span></span>
-<span><span class="co">## [13] sass_0.4.10         pkgdown_2.2.0       textshaping_1.0.4  </span></span>
-<span><span class="co">## [16] jquerylib_0.1.4     systemfonts_1.3.1   compiler_4.5.0     </span></span>
-<span><span class="co">## [19] tools_4.5.0         ragg_1.5.0          bslib_0.9.0        </span></span>
-<span><span class="co">## [22] evaluate_1.0.5      yaml_2.3.12         BiocManager_1.30.27</span></span>
-<span><span class="co">## [25] jsonlite_2.0.0      rlang_1.1.6         fs_1.6.6           </span></span>
-<span><span class="co">## [28] htmlwidgets_1.6.4</span></span></code></pre>
+<span><span class="co">##  [1] cli_3.6.6           knitr_1.51          rlang_1.2.0        </span></span>
+<span><span class="co">##  [4] xfun_0.58           otel_0.2.0          textshaping_1.0.5  </span></span>
+<span><span class="co">##  [7] jsonlite_2.0.0      htmltools_0.5.9     ragg_1.5.2         </span></span>
+<span><span class="co">## [10] sass_0.4.10         rmarkdown_2.31      evaluate_1.0.5     </span></span>
+<span><span class="co">## [13] jquerylib_0.1.4     fastmap_1.2.0       yaml_2.3.12        </span></span>
+<span><span class="co">## [16] lifecycle_1.0.5     bookdown_0.46       BiocManager_1.30.27</span></span>
+<span><span class="co">## [19] compiler_4.6.0      fs_2.1.0            htmlwidgets_1.6.4  </span></span>
+<span><span class="co">## [22] systemfonts_1.3.2   digest_0.6.39       R6_2.6.1           </span></span>
+<span><span class="co">## [25] bslib_0.11.0        tools_4.6.0         pkgdown_2.2.0.9000 </span></span>
+<span><span class="co">## [28] cachem_1.1.0        desc_1.4.3</span></span></code></pre>
 </div>
   </div>
 
@@ -310,7 +383,7 @@ between these different syntaxes:</p>
 
 <div class="pkgdown">
   <p></p>
-<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.2.0.</p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.2.0.9000.</p>
 </div>
 
       </footer>

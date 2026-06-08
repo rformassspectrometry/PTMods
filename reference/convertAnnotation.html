@@ -20,7 +20,7 @@ dataframe (see `?modifications`)."><!-- mathjax --><script src="https://cdnjs.cl
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">PTMods</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.99.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.1.1</span>
       </span>
     </div>
 
@@ -35,7 +35,7 @@ dataframe (see `?modifications`)."><!-- mathjax --><script src="https://cdnjs.cl
   <a href="../news/index.html">Changelog</a>
 </li>
       </ul><ul class="nav navbar-nav navbar-right"><li>
-  <a href="https://github.com/RforMassSpectrometry/unimod/" class="external-link">
+  <a href="https://github.com/RforMassSpectrometry/PTMods/" class="external-link">
     <span class="fab fa-github fa-lg"></span>
 
   </a>
@@ -50,7 +50,7 @@ dataframe (see `?modifications`)."><!-- mathjax --><script src="https://cdnjs.cl
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Convert sequences from one annotation style to another</h1>
-    <small class="dont-index">Source: <a href="https://github.com/RforMassSpectrometry/unimod/blob/HEAD/R/convertAnnotation.R" class="external-link"><code>R/convertAnnotation.R</code></a></small>
+    <small class="dont-index">Source: <a href="https://github.com/RforMassSpectrometry/PTMods/blob/main/R/convertAnnotation.R" class="external-link"><code>R/convertAnnotation.R</code></a></small>
     <div class="hidden name"><code>convertAnnotation.Rd</code></div>
     </div>
 
@@ -65,7 +65,8 @@ dataframe (see `?modifications`).</p>
     <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">convertAnnotation</span><span class="op">(</span></span>
 <span>  <span class="va">x</span>,</span>
 <span>  convertToStyle <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"deltaMass"</span>, <span class="st">"unimodId"</span>, <span class="st">"name"</span><span class="op">)</span>,</span>
-<span>  massTolerance <span class="op">=</span> <span class="fl">0.01</span></span>
+<span>  massTolerance <span class="op">=</span> <span class="fl">0.01</span>,</span>
+<span>  verbose <span class="op">=</span> <span class="cn">TRUE</span></span>
 <span><span class="op">)</span></span></code></pre></div>
     </div>
 
@@ -86,6 +87,11 @@ dataframe (see `?modifications`).</p>
 <dd><p>Numeric mass tolerance in Daltons for matching
 modifications (default: 0.01). Used when converting from deltaMass.</p></dd>
 
+
+<dt id="arg-verbose">verbose<a class="anchor" aria-label="anchor" href="#arg-verbose"></a></dt>
+<dd><p>`logical(1)`. If `FALSE`, warnings about unrecognised
+modifications are silenced (default: `TRUE`).</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
@@ -94,13 +100,13 @@ modifications (default: 0.01). Used when converting from deltaMass.</p></dd>
     <div id="details">
     <h2>Details</h2>
     <p>The function handles three main conversion scenarios:</p>
-<p>- Name to deltaMass: "M[Oxidation]PEPTIDE" -&gt; "M[+15.994915]PEPTIDE"
-- Name to unimodId: "M[Oxidation]PEPTIDE" -&gt; "M[UNIMOD:35]PEPTIDE"
-- deltaMass to name: "M[+15.995]PEPTIDE" -&gt; "M[Oxidation]PEPTIDE"
-- deltaMass to unimodId: "M[+15.995]PEPTIDE" -&gt; "M[UNIMOD:35]PEPTIDE"
-- unimodId to name: "M[UNIMOD:35]PEPTIDE" -&gt; "M[Oxidation]PEPTIDE"
-- unimodId to deltaMass: "M[UNIMOD:35]PEPTIDE" -&gt; "M[+15.994915]PEPTIDE"</p>
-    </div>
+<ul><li><p>Name to deltaMass: <code>"M[Oxidation]PEPTIDE"</code> -&gt; <code>"M[+15.994915]PEPTIDE"</code></p></li>
+<li><p>Name to unimodId: <code>"M[Oxidation]PEPTIDE"</code> -&gt; <code>"M[UNIMOD:35]PEPTIDE"</code></p></li>
+<li><p>deltaMass to name: <code>"M[+15.995]PEPTIDE"</code> -&gt; <code>"M[Oxidation]PEPTIDE"</code></p></li>
+<li><p>deltaMass to unimodId: <code>"M[+15.995]PEPTIDE"</code> -&gt; <code>"M[UNIMOD:35]PEPTIDE"</code></p></li>
+<li><p>unimodId to name: <code>"M[UNIMOD:35]PEPTIDE"</code> -&gt; <code>"M[Oxidation]PEPTIDE"</code></p></li>
+<li><p>unimodId to deltaMass: <code>"M[UNIMOD:35]PEPTIDE"</code> -&gt; <code>"M[+15.994915]PEPTIDE"</code></p></li>
+</ul></div>
     <div id="author">
     <h2>Author</h2>
     <p>Guillaume Deflandre &lt;guillaume.deflandre@uclouvain.be&gt;</p>
@@ -160,7 +166,7 @@ modifications (default: 0.01). Used when converting from deltaMass.</p></dd>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.2.0.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.2.0.9000.</p>
 </div>
 
       </footer></div>

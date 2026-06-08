@@ -17,7 +17,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">PTMods</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.99.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.1.1</span>
       </span>
     </div>
 
@@ -32,7 +32,7 @@
   <a href="../news/index.html">Changelog</a>
 </li>
       </ul><ul class="nav navbar-nav navbar-right"><li>
-  <a href="https://github.com/RforMassSpectrometry/unimod/" class="external-link">
+  <a href="https://github.com/RforMassSpectrometry/PTMods/" class="external-link">
     <span class="fab fa-github fa-lg"></span>
 
   </a>
@@ -47,29 +47,69 @@
   <div class="col-md-9 contents">
     <div class="page-header">
       <h1 data-toc-skip>Changelog <small></small></h1>
-      <small>Source: <a href="https://github.com/RforMassSpectrometry/unimod/blob/HEAD/NEWS.md" class="external-link"><code>NEWS.md</code></a></small>
+      <small>Source: <a href="https://github.com/RforMassSpectrometry/PTMods/blob/main/NEWS.md" class="external-link"><code>NEWS.md</code></a></small>
     </div>
 
     <div class="section level2">
+<h2 class="page-header" data-toc-text="1.1" id="ptmods-11">PTMods 1.1<a class="anchor" aria-label="anchor" href="#ptmods-11"></a></h2>
+<div class="section level3">
+<h3 id="ptmods-1-1">PTMods 1.1.1<a class="anchor" aria-label="anchor" href="#ptmods-1-1"></a></h3>
+<ul><li>Added <code>pos</code> parameter in <code><a href="../reference/addFixedModifications.html">addFixedModifications()</a></code> to allow positional modifications as they can be defined in some search engine outputs.</li>
+</ul></div>
+<div class="section level3">
+<h3 id="ptmods-1-1-1">PTMods 1.1.0<a class="anchor" aria-label="anchor" href="#ptmods-1-1-1"></a></h3>
+<ul><li>New Bioconductor devel.</li>
+</ul></div>
+</div>
+    <div class="section level2">
 <h2 class="page-header" data-toc-text="0.99" id="ptmods-099">PTMods 0.99<a class="anchor" aria-label="anchor" href="#ptmods-099"></a></h2>
 <div class="section level3">
-<h3 id="ptmods-0-99">PTMods 0.99.0<a class="anchor" aria-label="anchor" href="#ptmods-0-99"></a></h3>
+<h3 id="ptmods-0-99">PTMods 0.99.6<a class="anchor" aria-label="anchor" href="#ptmods-0-99"></a></h3>
+<ul><li>Adjusted documentation in <code><a href="../reference/convertAnnotation.html">convertAnnotation()</a></code>.</li>
+</ul></div>
+<div class="section level3">
+<h3 id="ptmods-0-99-1">PTMods 0.99.5<a class="anchor" aria-label="anchor" href="#ptmods-0-99-1"></a></h3>
+<ul><li>Import <code><a href="https://rdrr.io/r/stats/setNames.html" class="external-link">stats::setNames</a></code>.</li>
+<li>Specify package name when loading data (fixes an <a href="issue%20in%20MSnbase">https://github.com/lgatto/MSnbase/issues/613</a>).</li>
+</ul></div>
+<div class="section level3">
+<h3 id="ptmods-0-99-2">PTMods 0.99.4<a class="anchor" aria-label="anchor" href="#ptmods-0-99-2"></a></h3>
+<ul><li>Added <code><a href="../reference/getModificationsCounts.html">getModificationsCounts()</a></code>
+</li>
+<li>
+<code><a href="../reference/convertAnnotation.html">convertAnnotation()</a></code> now also has a <code>verbose</code> parameter to suppress warnings if need be.</li>
+</ul></div>
+<div class="section level3">
+<h3 id="ptmods-0-99-3">PTMods 0.99.3<a class="anchor" aria-label="anchor" href="#ptmods-0-99-3"></a></h3>
+<ul><li>Added <code><a href="../reference/addModifications.html">addModifications()</a></code>, <code><a href="../reference/addFixedModifications.html">addFixedModifications()</a></code>, <code><a href="../reference/addVariableModifications.html">addVariableModifications()</a></code>, <code><a href="../reference/getCanonicalSequence.html">getCanonicalSequence()</a></code> and useful PTM utils.</li>
+</ul></div>
+<div class="section level3">
+<h3 id="ptmods-0-99-4">PTMods 0.99.2<a class="anchor" aria-label="anchor" href="#ptmods-0-99-4"></a></h3>
+<ul><li>Update PTMods datasets [2026-02-18].</li>
+<li>Improved performance of <code><a href="../reference/convertAnnotation.html">convertAnnotation()</a></code> by calling the <code>modifications</code> dataset before <code><a href="../reference/convertAnnotation.html">.convertAnnotation()</a></code>.</li>
+</ul></div>
+<div class="section level3">
+<h3 id="ptmods-0-99-5">PTMods 0.99.1<a class="anchor" aria-label="anchor" href="#ptmods-0-99-5"></a></h3>
+<ul><li>Bump for re-build in Bioconductor submission (due to missing maintainer e-mail address)</li>
+</ul></div>
+<div class="section level3">
+<h3 id="ptmods-0-99-6">PTMods 0.99.0<a class="anchor" aria-label="anchor" href="#ptmods-0-99-6"></a></h3>
 <ul><li>Bump version for Bioconductor submission</li>
 </ul></div>
 <div class="section level3">
-<h3 id="ptmods-0-99-1">PTMods 0.3<a class="anchor" aria-label="anchor" href="#ptmods-0-99-1"></a></h3>
+<h3 id="ptmods-0-99-7">PTMods 0.3<a class="anchor" aria-label="anchor" href="#ptmods-0-99-7"></a></h3>
 <ul><li>Update PTMods datasets [2026-01-02 Fri].</li>
 <li>Rename the package to <code>PTMods</code> and add vignette.</li>
 <li>Add <code><a href="../reference/convertAnnotation.html">convertAnnotation()</a></code> to parse and convert between 3 PTM annotation styles. Currently supports <code>unimodId</code>, unimod <code>name</code> and <code>deltaMass</code>.</li>
 </ul></div>
 <div class="section level3">
-<h3 id="unimod-0-99">unimod 0.2 [2023-02-05]<a class="anchor" aria-label="anchor" href="#unimod-0-99"></a></h3>
+<h3 id="ptmods-0-99-8">PTMods 0.2<a class="anchor" aria-label="anchor" href="#ptmods-0-99-8"></a></h3>
 <ul><li>Update datasets to latest unimod version.</li>
 <li>In the new unimod version some IDs are duplicated using the current “Name:Site:Position:NeutralLoss” ID scheme. For these we add increasing numbers to the end (“Name:Site:Position:NeutralLoss:DuplicateNumber”).</li>
 <li>Now depends on R 3.5 (serialisation of RData files changed).</li>
 </ul></div>
 <div class="section level3">
-<h3 id="unimod-0-99-1">unimod 0.1 [2014-04-14]<a class="anchor" aria-label="anchor" href="#unimod-0-99-1"></a></h3>
+<h3 id="ptmods-0-99-9">PTMods 0.1<a class="anchor" aria-label="anchor" href="#ptmods-0-99-9"></a></h3>
 <ul><li>First public version.</li>
 </ul></div>
 </div>
@@ -87,7 +127,7 @@
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.2.0.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.2.0.9000.</p>
 </div>
 
       </footer></div>

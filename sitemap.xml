@@ -6,9 +6,15 @@
 <url><loc>/index.html</loc></url>
 <url><loc>/news/index.html</loc></url>
 <url><loc>/reference/PTMods-package.html</loc></url>
+<url><loc>/reference/addFixedModifications.html</loc></url>
+<url><loc>/reference/addModifications.html</loc></url>
+<url><loc>/reference/addVariableModifications.html</loc></url>
 <url><loc>/reference/aminoacids.html</loc></url>
+<url><loc>/reference/combineModifications.html</loc></url>
 <url><loc>/reference/convertAnnotation.html</loc></url>
 <url><loc>/reference/elements.html</loc></url>
+<url><loc>/reference/getCanonicalSequence.html</loc></url>
+<url><loc>/reference/getModificationsCounts.html</loc></url>
 <url><loc>/reference/index.html</loc></url>
 <url><loc>/reference/modifications.html</loc></url>
 </urlset>
