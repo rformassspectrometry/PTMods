@@ -40,3 +40,4 @@ Code in this package is focused on the use of UniMod data and the
 Peptidoform Notation formats with the goal to integrate them within the 
 [*R for Mass Spectrometry*](https://github.com/rformassspectrometry)
 infrastructure.
+# SimpleBiocContainer
