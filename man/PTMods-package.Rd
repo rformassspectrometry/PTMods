@@ -26,6 +26,7 @@ Useful links:
 
 Authors:
 \itemize{
+  \item Guillaume Deflandre \email{guillaume.deflandre@uclouvain.be} (\href{https://orcid.org/0009-0008-1257-2416}{ORCID})
   \item Laurent Gatto \email{laurent.gatto@uclouvain.be} (\href{https://orcid.org/0000-0002-1520-2268}{ORCID})
   \item Sebastian Gibb \email{mail@sebastiangibb.de} (\href{https://orcid.org/0000-0001-7406-4443}{ORCID})
 }

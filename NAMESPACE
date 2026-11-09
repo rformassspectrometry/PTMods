@@ -9,6 +9,8 @@ export(getCanonicalSequence)
 export(getModificationsCounts)
 importFrom(methods,is)
 importFrom(stats,setNames)
-importFrom(utils,combn)
-importFrom(utils,data)
-importFrom(utils,packageVersion)
+importFrom(utils,
+  combn,
+  data,
+  packageVersion
+)
