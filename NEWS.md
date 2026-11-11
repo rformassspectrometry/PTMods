@@ -2,6 +2,7 @@
 
 ## PTMods 1.1.1
 
+- Add license note in README.
 - Added `pos` parameter in `addFixedModifications()` to allow positional
   modifications as they can be defined in some search engine outputs.
 
@@ -11,7 +12,7 @@
 
 # PTMods 0.99
 
-## PTMods 0.99.6 
+## PTMods 0.99.6
 
 - Adjusted documentation in `convertAnnotation()`.
 

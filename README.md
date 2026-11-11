@@ -6,15 +6,15 @@
 
 A package to managing post-translational modifications in `R`.
 
-The [reference manual](https://rformassspectrometry.github.io/PTMods/articles/PTMods.html) 
+The [reference manual](https://rformassspectrometry.github.io/PTMods/articles/PTMods.html)
 is a good way to get started with the package.
 
 ## Suggested packages
 
-We highly suggest combining `PTMods` with 
-[PSMatch](https://github.com/rformassspectrometry/PSMatch) and 
+We highly suggest combining `PTMods` with
+[PSMatch](https://github.com/rformassspectrometry/PSMatch) and
 [Spectra](https://github.com/rformassspectrometry/Spectra) for a more
-complete approach to analysing mass spectrometry data in R. 
+complete approach to analysing mass spectrometry data in R.
 
 ## Installation instructions
 
@@ -29,14 +29,22 @@ BiocManager::install("PTMods")
 
 Contributions are welcome, and should ideally be provided through a Github pull
 request. Feel free to discuss any more non-trivial suggestions or changes first
-in an issue. See also the main 
+in an issue. See also the main
 [R for Mass Spectrometry contribution guide](https://rformassspectrometry.github.io/RforMassSpectrometry/articles/RforMassSpectrometry.html#contributions) and
 [code of conduct](https://rformassspectrometry.github.io/RforMassSpectrometry/articles/RforMassSpectrometry.html#code-of-conduct)
 
+## License
+
+The `PTMods` code is provided under a
+[GPL-3](https://opensource.org/license/gpl-3.0) license.  The
+documentation, including the manual pages and the vignettes, are
+distributed under a [CC BY-SA
+license](https://creativecommons.org/licenses/by-sa/2.0/).
+
 ## Credit
 
-Code in this package is focused on the use of UniMod data and the 
-[ProForma](https://github.com/HUPO-PSI/ProForma) standard Proteoform and 
-Peptidoform Notation formats with the goal to integrate them within the 
+Code in this package is focused on the use of UniMod data and the
+[ProForma](https://github.com/HUPO-PSI/ProForma) standard Proteoform and
+Peptidoform Notation formats with the goal to integrate them within the
 [*R for Mass Spectrometry*](https://github.com/rformassspectrometry)
 infrastructure.
