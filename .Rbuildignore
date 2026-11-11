@@ -6,4 +6,7 @@
 ^notes$
 ^.*\.Rproj$
 ^\.Rproj\.user$
-.github
+.github_pkgdown.yml
+_pkgdown.yml~
+favicon
+stickers
