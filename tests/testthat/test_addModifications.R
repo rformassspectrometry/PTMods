@@ -26,7 +26,7 @@ test_that("addModifications with both fixed and variable modifications", {
         "ATCSK",
         fixedModifications = c(C = 57.02146),
         variableModifications = c(S = 79.966331, T = 79.966331),
-        maxMods = 1
+        maxMods = 2
     )
     ## Fixed first: ATC[+57.02146]SK
     ## Then variable on T and S: 1+2 = 3 combos
