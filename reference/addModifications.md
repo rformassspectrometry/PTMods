@@ -141,8 +141,7 @@ addModifications(
     variableModifications = c(S = 79.966331, T = 79.966331),
     maxMods = 1
 )
-#> [1] "ATC[+57.02146]SK"             "AT[+79.966331]C[+57.02146]SK"
-#> [3] "ATC[+57.02146]S[+79.966331]K"
+#> [1] "ATC[+57.02146]SK"
 
 ## Return annotations in UniMod name style
 addModifications(

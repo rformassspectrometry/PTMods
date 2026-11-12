@@ -4,6 +4,9 @@
 
 ### PTMods 1.1.2
 
+- [`addVariableModifications()`](https://rformassspectrometry.github.io/PTMods/reference/addVariableModifications.md)
+  now counts how many modifications are already present and links that
+  to maxMods.
 - Add CC BY-SA license in vignette and update link in README.
 
 ### PTMods 1.1.1
