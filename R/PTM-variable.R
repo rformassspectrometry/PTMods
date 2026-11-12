@@ -147,6 +147,15 @@ addVariableModifications <- function(sequences,
         return(sequence)
     }
 
+    ## How many modifications are already present ?
+    modCount <- sum(getModificationsCounts(sequence))
+    ## If maxMods < modCount, then return the sequence
+    if (maxMods <= modCount) {
+      return(sequence)
+    } else { ## Minus the already present mods
+      maxMods <- maxMods - modCount
+    }
+
     terms <- .extractTerminalMods(sequence)
     sequence <- terms$sequence
 
