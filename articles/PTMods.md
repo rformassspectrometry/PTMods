@@ -5,8 +5,8 @@
 <https://orcid.org/0000-0002-1520-2268>), Sebastian Gibb \[aut\] (ORCID:
 <https://orcid.org/0000-0001-7406-4443>), Guillaume Deflandre \[cre,
 aut\] (ORCID: <https://orcid.org/0009-0008-1257-2416>)\
-**Last modified:** 2026-11-11 15:12:53.183726\
-**Compiled**: Wed Nov 11 15:13:56 2026
+**Last modified:** 2026-11-12 13:14:52.900579\
+**Compiled**: Thu Nov 12 13:16:00 2026
 
 ## Introduction
 
@@ -268,6 +268,11 @@ To remove any and all modifications on a sequence, use
 
     ## [1] "MPEPTIDE"
 
+## License
+
+This vignette is distributed under a [CC BY-SA
+license](https://creativecommons.org/licenses/by-sa/4.0/).
+
 ## Session information
 
 \
@@ -296,7 +301,7 @@ To remove any and all modifications on a sequence, use
     ## [1] stats     graphics  grDevices utils     datasets  methods   base     
     ## 
     ## other attached packages:
-    ## [1] PTMods_1.1.1     BiocStyle_2.41.0
+    ## [1] PTMods_1.1.2     BiocStyle_2.41.0
     ## 
     ## loaded via a namespace (and not attached):
     ##  [1] cli_3.6.6           knitr_1.52          rlang_1.3.0        

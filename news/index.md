@@ -2,6 +2,10 @@
 
 ## PTMods 1.1
 
+### PTMods 1.1.2
+
+- Add CC BY-SA license in vignette and update link in README.
+
 ### PTMods 1.1.1
 
 - Add license note in README.
