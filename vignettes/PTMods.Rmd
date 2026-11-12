@@ -85,7 +85,7 @@ The `PTMods` package distributes the data from the Unimod database:
 
 Source: http://www.unimod.org/unimod_help.html
 We try to keep the data up to date with the Unimod database. If you believe it
-isn't, do not hesitate to contact us through an 
+isn't, do not hesitate to contact us through an
 [issue on the GitHub page](https://github.com/rformassspectrometry/PTMods/issues/new).
 
 The package provides the following objects.
@@ -162,7 +162,7 @@ PTMs may be added (in any of the formats mentioned above) using the
 `addFixedModifications()` and `addVariableModifications()` functions.
 
 The latter will provide all combinations of possible sequences with the given
-modifications. 
+modifications.
 
 ```{r basicAddMod}
 addFixedModifications("MPEPTIDE",
@@ -223,6 +223,11 @@ To remove any and all modifications on a sequence, use
 ```{r getCanonicalSeq}
 getCanonicalSequence("[+304]-M[Oxidation]PEPT[UNIMOD:21]IDE")
 ```
+
+# License
+
+This vignette is distributed under a [CC BY-SA
+license](https://creativecommons.org/licenses/by-sa/4.0/).
 
 # Session information
 
